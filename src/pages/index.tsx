@@ -90,7 +90,7 @@ export default function Home() {
           disablePictureInPicture
           controlsList="nodownload nofullscreen noremoteplayback"
         >
-          <source src="/video/opening.mp4" type="video/mp4" />
+          <source src="/video/main.mp4" type="video/mp4" />
           브라우저가 비디오를 지원하지 않습니다.
         </video>
       </OpeningVideoSection>
