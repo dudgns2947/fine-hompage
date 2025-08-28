@@ -46,7 +46,7 @@ const Logo = styled(Link)`
   text-decoration: none;
 
   img {
-    width: 40px;
+    width: 160px;
     height: 40px;
   }
 
@@ -231,10 +231,9 @@ const Header: React.FC = () => {
           <Image 
             src="/image/logo.png" 
             alt="FINE 로고" 
-            width={40} 
+            width={160} 
             height={40}
           />
-          FINE
         </Logo>
 
         <DesktopNav>

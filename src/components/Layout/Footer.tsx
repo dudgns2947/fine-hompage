@@ -65,8 +65,9 @@ const CompanySection = styled.div`
     margin-bottom: 1rem;
 
     img {
-      width: 35px;
-      height: 35px;
+      width: 160px;
+      height: 40px;
+      opacity: 0.9;
     }
 
     @media (max-width: 768px) {
@@ -344,10 +345,9 @@ const Footer: React.FC = () => {
               <Image 
                 src="/image/logo.png" 
                 alt="FINE 로고" 
-                width={35} 
-                height={35}
+                width={160} 
+                height={40}
               />
-              {companyInfo.name}
             </h3>
             <p>{companyInfo.description}</p>
             <p>설립: {companyInfo.established}년</p>
