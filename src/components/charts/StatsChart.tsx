@@ -12,6 +12,7 @@ const ChartContainer = styled(motion.div)`
   padding: 2rem;
   box-shadow: var(--shadow);
   margin: 2rem 0;
+  width: 100%;
 
   @media (max-width: 768px) {
     padding: 1.5rem;

@@ -16,6 +16,7 @@ const HeroContainer = styled.section`
   position: relative;
   overflow: hidden;
   padding: 2rem 0;
+  width: 100%;
 
   &::before {
     content: '';
@@ -24,15 +25,16 @@ const HeroContainer = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('/image/hero-pattern.svg') no-repeat center center;
-    background-size: cover;
-    opacity: 0.05;
+    background: radial-gradient(circle at 30% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(44, 62, 80, 0.08) 0%, transparent 50%);
+    opacity: 0.5;
     z-index: 0;
   }
 
   @media (max-width: 768px) {
     min-height: auto;
     padding: 4rem 0 2rem;
+    overflow-x: hidden;
   }
 
   @media (max-width: 480px) {
@@ -50,6 +52,7 @@ const HeroContent = styled.div`
   align-items: center;
   position: relative;
   z-index: 1;
+  width: 100%;
 
   @media (max-width: 1024px) {
     gap: 3rem;
@@ -58,13 +61,15 @@ const HeroContent = styled.div`
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
     text-align: center;
     padding: 0 1rem;
+    max-width: 100%;
+    overflow: hidden;
   }
 
   @media (max-width: 480px) {
-    gap: 2rem;
+    gap: 1.5rem;
     padding: 0 0.75rem;
   }
 `;
@@ -132,6 +137,7 @@ const VisualContent = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 450px;
+  width: 100%;
 
   @media (max-width: 1024px) {
     min-height: 400px;
@@ -139,13 +145,17 @@ const VisualContent = styled.div`
 
   @media (max-width: 768px) {
     order: -1;
-    min-height: 300px;
+    min-height: 400px;
     margin-bottom: 1rem;
+    position: relative;
+    padding: 0 1rem;
+    overflow: visible;
   }
 
   @media (max-width: 480px) {
-    min-height: 250px;
+    min-height: 350px;
     margin-bottom: 0.5rem;
+    padding: 0 0.5rem;
   }
 `;
 
@@ -196,69 +206,142 @@ const FloatingCard = styled(motion.div)<{ delay: number }>`
   &:nth-child(1) {
     top: 5%;
     right: 5%;
-    transform: translateX(50%);
+    transform: translateX(100%);
   }
 
   &:nth-child(2) {
-    top: 40%;
+    top: 20%;
     left: 5%;
     transform: translateX(-50%);
   }
 
   &:nth-child(3) {
-    bottom: 5%;
-    right: 15%;
-    transform: translateX(30%);
+    top: 15%;
+    right: 0%;
+    transform: translateX(20%);
   }
 
   @media (max-width: 1024px) {
     &:nth-child(1) {
-      top: 10%;
+      top: -5%;
       right: 2%;
       transform: translateX(20%);
     }
 
     &:nth-child(2) {
-      top: 45%;
+      top: 0%;
       left: 2%;
       transform: translateX(-20%);
     }
 
     &:nth-child(3) {
-      bottom: 10%;
-      right: 5%;
-      transform: translateX(10%);
+      top: 20%;
+      right: -2%;
+      transform: translateX(15%);
     }
   }
 
   @media (max-width: 768px) {
-    position: static;
-    margin: 0.75rem auto;
-    min-width: auto;
-    width: 100%;
-    max-width: 280px;
-    transform: none;
-    padding: 1.25rem;
+    position: absolute;
+    height: 70px;
+    min-width: 120px;
+    width: 160px;
+    max-width: 180px;
+    padding: 0.875rem;
+    
+    &:nth-child(1) {
+      top: 8%;
+      right: 5%;
+      transform: translateX(30%);
+    }
+
+    &:nth-child(2) {
+      top: 55%;
+      left: 2%;
+      transform: translateX(-20%);
+    }
+
+    &:nth-child(3) {
+      bottom: 12%;
+      right: 8%;
+      transform: translateX(25%);
+    }
   }
 
   @media (max-width: 480px) {
-    max-width: 260px;
-    padding: 1rem;
-    margin: 0.5rem auto;
+    max-width: 160px;
+    padding: 0.75rem;
+    
+    &:nth-child(1) {
+      top: 5%;
+      right: 2%;
+      transform: translateX(20%);
+    }
+
+    &:nth-child(2) {
+      top: 60%;
+      left: 0%;
+      transform: translateX(-10%);
+    }
+
+    &:nth-child(3) {
+      bottom: 8%;
+      right: 5%;
+      transform: translateX(15%);
+    }
     
     .icon {
-      width: 50px;
-      height: 50px;
-      font-size: 1.75rem;
+      width: 45px;
+      height: 45px;
+      font-size: 1.5rem;
     }
 
     .content {
       h4 {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
       }
 
       p {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  @media (max-width: 360px) {
+    max-width: 140px;
+    padding: 0.625rem;
+    
+    &:nth-child(1) {
+      top: 3%;
+      right: 0%;
+      transform: translateX(10%);
+    }
+
+    &:nth-child(2) {
+      top: 65%;
+      left: -2%;
+      transform: translateX(-5%);
+    }
+
+    &:nth-child(3) {
+      bottom: 5%;
+      right: 2%;
+      transform: translateX(10%);
+    }
+    
+    .icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1.25rem;
+    }
+
+    .content {
+      h4 {
         font-size: 0.8rem;
+      }
+
+      p {
+        font-size: 0.7rem;
       }
     }
   }
@@ -276,6 +359,7 @@ const MainVisual = styled(motion.div)`
   color: white;
   position: relative;
   z-index: 1;
+  flex-shrink: 0;
 
   svg {
     color: white;
@@ -288,21 +372,22 @@ const MainVisual = styled(motion.div)`
   }
 
   @media (max-width: 768px) {
-    width: 250px;
-    height: 250px;
-    font-size: 5rem;
-  }
-
-  @media (max-width: 480px) {
     width: 200px;
     height: 200px;
     font-size: 4rem;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 480px) {
+    width: 160px;
+    height: 160px;
+    font-size: 3rem;
   }
 
   @media (max-width: 360px) {
-    width: 180px;
-    height: 180px;
-    font-size: 3.5rem;
+    width: 140px;
+    height: 140px;
+    font-size: 2.5rem;
   }
 `;
 
@@ -329,6 +414,7 @@ const floatingCards: Array<{
 ];
 
 const HeroSection: React.FC = () => {
+
   return (
     <HeroContainer>
       <HeroContent>
@@ -466,7 +552,7 @@ const HeroSection: React.FC = () => {
               }}
               transition={{ 
                 duration: 0.8, 
-                delay: 1.5 + index * 0.3,
+                delay: 1.5 + index * 0.2,
                 type: "spring",
                 stiffness: 100,
                 damping: 15

@@ -12,6 +12,10 @@ export default function MyDocument() {
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico" />
         <meta name="theme-color" content="#FF6B35" />
         <meta name="msapplication-TileColor" content="#FF6B35" />
+        <link 
+          rel="stylesheet" 
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" 
+        />
       </Head>
       <body>
         <Main />

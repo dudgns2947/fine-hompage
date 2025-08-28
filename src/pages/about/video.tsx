@@ -67,6 +67,23 @@ const VideoPlayer = styled.div`
   overflow: hidden;
   box-shadow: var(--shadow-hover);
 
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    
+    &::-webkit-media-controls-panel {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    &::-webkit-media-controls-play-button,
+    &::-webkit-media-controls-pause-button {
+      background-color: var(--primary-color);
+      border-radius: 50%;
+    }
+  }
+
   .video-placeholder {
     position: absolute;
     inset: 0;
@@ -249,6 +266,23 @@ const Modal = styled(motion.div)`
     border-radius: var(--border-radius);
     overflow: hidden;
 
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      
+      &::-webkit-media-controls-panel {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+      &::-webkit-media-controls-play-button,
+      &::-webkit-media-controls-pause-button {
+        background-color: var(--primary-color);
+        border-radius: 50%;
+      }
+    }
+
     .close-button {
       position: absolute;
       top: 1rem;
@@ -388,15 +422,18 @@ const VideoPage: React.FC = () => {
                 transition={{ duration: 0.8 }}
               >
                 <VideoPlayer>
-                  <div className="video-placeholder">
-                    <div 
-                      className="play-button"
-                      onClick={() => openModal(1)}
-                    >
-                      ▶
-                    </div>
-                    <div>메인 소개 영상</div>
-                  </div>
+                  <video
+                    width="100%"
+                    height="100%"
+                    controls
+                    style={{
+                      borderRadius: 'var(--border-radius)',
+                      objectFit: 'cover'
+                    }}
+                  >
+                    <source src="/video/main.mp4" type="video/mp4" />
+                    브라우저가 비디오를 지원하지 않습니다.
+                  </video>
                 </VideoPlayer>
                 <VideoInfo>
                   <h2>FINE과 함께하는 안전한 미래</h2>
@@ -462,16 +499,33 @@ const VideoPage: React.FC = () => {
                 <button className="close-button" onClick={closeModal}>
                   ✕
                 </button>
-                <div className="video-placeholder">
-                  <div className="icon"><Icon type="video" /></div>
-                  <div>
-                    <h3>영상 재생</h3>
-                    <p>실제 서비스에서는 YouTube 또는<br />Vimeo 영상이 재생됩니다</p>
-                    <p style={{ color: 'var(--primary-color)', fontWeight: 600, marginTop: '1rem' }}>
-                      선택된 영상: {videos.find(v => v.id === selectedVideo)?.title}
-                    </p>
+                {selectedVideo === 1 ? (
+                  <video
+                    width="100%"
+                    height="100%"
+                    controls
+                    autoPlay
+                    poster="/image/logo.png"
+                    style={{
+                      borderRadius: 'var(--border-radius)',
+                      objectFit: 'cover'
+                    }}
+                  >
+                    <source src="/video/main.mp4" type="video/mp4" />
+                    브라우저가 비디오를 지원하지 않습니다.
+                  </video>
+                ) : (
+                  <div className="video-placeholder">
+                    <div className="icon"><Icon type="video" /></div>
+                    <div>
+                      <h3>영상 재생</h3>
+                      <p>실제 서비스에서는 YouTube 또는<br />Vimeo 영상이 재생됩니다</p>
+                      <p style={{ color: 'var(--primary-color)', fontWeight: 600, marginTop: '1rem' }}>
+                        선택된 영상: {videos.find(v => v.id === selectedVideo)?.title}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                )}
               </motion.div>
             </Modal>
           )}

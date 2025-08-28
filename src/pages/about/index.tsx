@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Layout from '@/components/Layout/Layout';
 import SEO from '@/components/common/SEO';
 import Button from '@/components/common/Button';
@@ -227,6 +227,102 @@ const VisionContent = styled.div`
   }
 `;
 
+const VideoModal = styled(motion.div)`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+
+  .modal-content {
+    position: relative;
+    width: auto;
+    height: 80vh;
+    max-height: 800px;
+    aspect-ratio: 9/16;
+    background: var(--bg-secondary);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    max-width: 90vw;
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: var(--border-radius);
+      background: #000;
+      
+      &::-webkit-media-controls-panel {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+      &::-webkit-media-controls-play-button,
+      &::-webkit-media-controls-pause-button {
+        background-color: var(--primary-color);
+        border-radius: 50%;
+      }
+    }
+
+    .close-button {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 0, 0, 0.7);
+      border: none;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.25rem;
+      cursor: pointer;
+      z-index: 1001;
+      transition: var(--transition);
+
+      &:hover {
+        background: rgba(0, 0, 0, 0.9);
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    
+    .modal-content {
+      height: 70vh;
+      max-height: 600px;
+      max-width: 95vw;
+      
+      .close-button {
+        top: 0.5rem;
+        right: 0.5rem;
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+    
+    .modal-content {
+      height: 60vh;
+      max-height: 500px;
+      
+      .close-button {
+        top: 0.25rem;
+        right: 0.25rem;
+        width: 30px;
+        height: 30px;
+        font-size: 0.875rem;
+      }
+    }
+  }
+`;
+
 const stats = [
   { number: '14', label: '설립 연수' },
   { number: '50K+', label: '고객 수' },
@@ -235,6 +331,16 @@ const stats = [
 ];
 
 const About: React.FC = () => {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  const openVideo = () => {
+    setIsVideoOpen(true);
+  };
+
+  const closeVideo = () => {
+    setIsVideoOpen(false);
+  };
+
   return (
     <Layout>
       <SEO 
@@ -363,13 +469,50 @@ const About: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <Button variant="outline" size="large">
+              <Button variant="outline" size="large" onClick={openVideo}>
                 회사 영상 보기
               </Button>
             </motion.div>
           </VisionContent>
         </VisionSection>
       </AboutContainer>
+
+      <AnimatePresence>
+        {isVideoOpen && (
+          <VideoModal
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeVideo}
+          >
+            <motion.div
+              className="modal-content"
+              initial={{ scale: 0.8 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.8 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button className="close-button" onClick={closeVideo}>
+                ✕
+              </button>
+              <video
+                width="100%"
+                height="100%"
+                controls
+                autoPlay
+                style={{
+                  borderRadius: 'var(--border-radius)',
+                  objectFit: 'contain',
+                  background: '#000'
+                }}
+              >
+                <source src="/video/careerIntroduce.mp4" type="video/mp4" />
+                브라우저가 비디오를 지원하지 않습니다.
+              </video>
+            </motion.div>
+          </VideoModal>
+        )}
+      </AnimatePresence>
     </Layout>
   );
 };
