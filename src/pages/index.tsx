@@ -80,7 +80,6 @@ export default function Home() {
         description="고객 중심의 맞춤형 보험 서비스로 여러분의 소중한 일상을 보호합니다. 생명보험, 손해보험, 건강보험, 연금보험 전문 상담."
         keywords="보험, 생명보험, 손해보험, 건강보험, 연금보험, FINE, 보험상담, 보험설계"
       />
-      <HeroSection />
       <OpeningVideoSection>
         <video
           autoPlay
@@ -94,6 +93,7 @@ export default function Home() {
           브라우저가 비디오를 지원하지 않습니다.
         </video>
       </OpeningVideoSection>
+      <HeroSection />
       <ServicesSection />
       <StatsSection />
     </Layout>

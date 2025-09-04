@@ -289,7 +289,7 @@ const FooterBottom = styled.div`
   padding-top: 1rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   font-size: 0.9rem;
   color: #BDC3C7;
 
@@ -297,11 +297,20 @@ const FooterBottom = styled.div`
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+    align-items: center;
   }
 
   @media (max-width: 480px) {
     font-size: 0.85rem;
     gap: 0.75rem;
+  }
+
+  > div:first-child {
+    flex: 1;
+    
+    @media (max-width: 768px) {
+      text-align: center;
+    }
   }
 `;
 
@@ -439,7 +448,13 @@ const Footer: React.FC = () => {
 
         <FooterBottom>
           <div>
-            © 2025 {companyInfo.name}. All rights reserved.
+            <div>© 2025 {companyInfo.fullName}({companyInfo.name}). All rights reserved.</div>
+            <div style={{ fontSize: '0.8rem', marginTop: '0.5rem', color: '#95A5A6' }}>
+              사업자등록번호: {companyInfo.businessNumber} | 대표: {companyInfo.representative}
+            </div>
+            <div style={{ fontSize: '0.8rem', marginTop: '0.25rem', color: '#95A5A6' }}>
+              업태: {companyInfo.businessType} | 종목: {companyInfo.businessItem}
+            </div>
           </div>
           <PolicyLinks>
             <Link href="/privacy">개인정보처리방침</Link>

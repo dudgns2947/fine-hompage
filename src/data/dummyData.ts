@@ -1,11 +1,16 @@
-// 더미 데이터
+// 회사 정보 (사업자등록증 기반)
 export const companyInfo = {
   name: "FINE",
+  fullName: "굿리치 주식회사",
   description: "신뢰할 수 있는 보험 파트너",
   address: "서울특별시 강남구 테헤란로 123",
   phone: "02-1234-5678",
   email: "info@dynamicfine.co.kr",
-  established: "2025",
+  established: "2006",
+  businessNumber: "120-86-60433",
+  representative: "서울특별시 중구 세종대로 44, 제휴센터",
+  businessType: "서울특별시 중구 세종대로/보험설계/자동차관리",
+  businessItem: "보험업 및 중개업/금융/투자자문",
 };
 
 export const navigationMenu = [
