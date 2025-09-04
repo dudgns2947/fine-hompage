@@ -322,6 +322,38 @@ const Modal = styled(motion.div)`
   }
 `;
 
+// 새로 추가된 Intro 비디오들 (우선 노출)
+const introVideos = [
+  {
+    id: 'intro-1',
+    title: 'Fine 소개영상-1',
+    description: 'FINE의 첫 번째 소개 영상입니다. 회사의 핵심 가치와 비전을 소개합니다.',
+    duration: '2:30',
+    date: '2025.01.20',
+    views: '856',
+    videoSrc: '/video/Intro-1.mp4'
+  },
+  {
+    id: 'intro-2',
+    title: 'Fine 소개영상-2',
+    description: 'FINE의 두 번째 소개 영상입니다. 주요 서비스와 고객 혜택을 안내합니다.',
+    duration: '3:15',
+    date: '2025.01.19',
+    views: '742',
+    videoSrc: '/video/Intro-2.mp4'
+  },
+  {
+    id: 'intro-3',
+    title: 'Fine 소개영상-3',
+    description: 'FINE의 세 번째 소개 영상입니다. 미래 계획과 고객과의 약속을 전달합니다.',
+    duration: '2:45',
+    date: '2025.01.18',
+    views: '623',
+    videoSrc: '/video/Intro-3.mp4'
+  }
+];
+
+// 기존 비디오들
 const videos = [
   {
     id: 1,
@@ -374,14 +406,24 @@ const videos = [
 ];
 
 const VideoPage: React.FC = () => {
-  const [selectedVideo, setSelectedVideo] = useState<number | null>(null);
+  const [selectedVideo, setSelectedVideo] = useState<string | number | null>(null);
 
-  const openModal = (videoId: number) => {
+  const openModal = (videoId: string | number) => {
     setSelectedVideo(videoId);
   };
 
   const closeModal = () => {
     setSelectedVideo(null);
+  };
+
+  // 선택된 비디오 정보 가져오기
+  const getSelectedVideoInfo = () => {
+    if (typeof selectedVideo === 'string') {
+      return introVideos.find(v => v.id === selectedVideo);
+    } else if (typeof selectedVideo === 'number') {
+      return videos.find(v => v.id === selectedVideo);
+    }
+    return null;
   };
 
   return (
@@ -415,11 +457,61 @@ const VideoPage: React.FC = () => {
 
         <VideoSection>
           <VideoContent>
+            {/* 새로운 Intro 비디오 섹션 */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              style={{ marginBottom: '4rem' }}
+            >
+              <h2 style={{ 
+                fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', 
+                fontWeight: '600', 
+                color: 'var(--text-primary)', 
+                textAlign: 'center', 
+                marginBottom: '3rem' 
+              }}>
+                최신 <span style={{ color: 'var(--primary-color)' }}>소개영상</span>
+              </h2>
+              <VideoGrid>
+                {introVideos.map((video, index) => (
+                  <VideoCard
+                    key={video.id}
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.02 }}
+                    onClick={() => openModal(video.id)}
+                  >
+                    <div className="thumbnail">
+                      <Icon type="play" />
+                      <div className="play-overlay">
+                        <div className="play-button">▶</div>
+                      </div>
+                      <div className="duration">{video.duration}</div>
+                    </div>
+                    <div className="video-info">
+                      <h3>{video.title}</h3>
+                      <p>{video.description}</p>
+                      <div className="video-meta">
+                        <div className="date">
+                          📅 {video.date}
+                        </div>
+                        <div className="views">
+                          <Icon type="star" style={{ marginRight: '0.25rem' }} />{video.views}
+                        </div>
+                      </div>
+                    </div>
+                  </VideoCard>
+                ))}
+              </VideoGrid>
+            </motion.div>
+
             <FeaturedVideo>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
               >
                 <VideoPlayer>
                   <video
@@ -446,38 +538,6 @@ const VideoPage: React.FC = () => {
               </motion.div>
             </FeaturedVideo>
 
-            <VideoGrid>
-              {videos.map((video, index) => (
-                <VideoCard
-                  key={video.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                  onClick={() => openModal(video.id)}
-                >
-                  <div className="thumbnail">
-                    <Icon type="play" />
-                    <div className="play-overlay">
-                      <div className="play-button">▶</div>
-                    </div>
-                    <div className="duration">{video.duration}</div>
-                  </div>
-                  <div className="video-info">
-                    <h3>{video.title}</h3>
-                    <p>{video.description}</p>
-                    <div className="video-meta">
-                      <div className="date">
-                        📅 {video.date}
-                      </div>
-                      <div className="views">
-                        <Icon type="star" style={{ marginRight: '0.25rem' }} />{video.views}
-                      </div>
-                    </div>
-                  </div>
-                </VideoCard>
-              ))}
-            </VideoGrid>
           </VideoContent>
         </VideoSection>
 
@@ -499,33 +559,63 @@ const VideoPage: React.FC = () => {
                 <button className="close-button" onClick={closeModal}>
                   ✕
                 </button>
-                {selectedVideo === 1 ? (
-                  <video
-                    width="100%"
-                    height="100%"
-                    controls
-                    autoPlay
-                    poster="/image/logo.png"
-                    style={{
-                      borderRadius: 'var(--border-radius)',
-                      objectFit: 'cover'
-                    }}
-                  >
-                    <source src="/video/main.mp4" type="video/mp4" />
-                    브라우저가 비디오를 지원하지 않습니다.
-                  </video>
-                ) : (
-                  <div className="video-placeholder">
-                    <div className="icon"><Icon type="video" /></div>
-                    <div>
-                      <h3>영상 재생</h3>
-                      <p>실제 서비스에서는 YouTube 또는<br />Vimeo 영상이 재생됩니다</p>
-                      <p style={{ color: 'var(--primary-color)', fontWeight: 600, marginTop: '1rem' }}>
-                        선택된 영상: {videos.find(v => v.id === selectedVideo)?.title}
-                      </p>
+                {(() => {
+                  const videoInfo = getSelectedVideoInfo();
+                  
+                  // Intro 비디오들 (실제 비디오 파일 재생)
+                  if (typeof selectedVideo === 'string' && videoInfo && 'videoSrc' in videoInfo) {
+                    return (
+                      <video
+                        width="100%"
+                        height="100%"
+                        controls
+                        autoPlay
+                        poster="/image/logo.png"
+                        style={{
+                          borderRadius: 'var(--border-radius)',
+                          objectFit: 'cover'
+                        }}
+                      >
+                        <source src={videoInfo.videoSrc} type="video/mp4" />
+                        브라우저가 비디오를 지원하지 않습니다.
+                      </video>
+                    );
+                  }
+                  
+                  // 메인 비디오 (기존 main.mp4)
+                  if (selectedVideo === 1) {
+                    return (
+                      <video
+                        width="100%"
+                        height="100%"
+                        controls
+                        autoPlay
+                        poster="/image/logo.png"
+                        style={{
+                          borderRadius: 'var(--border-radius)',
+                          objectFit: 'cover'
+                        }}
+                      >
+                        <source src="/video/main.mp4" type="video/mp4" />
+                        브라우저가 비디오를 지원하지 않습니다.
+                      </video>
+                    );
+                  }
+                  
+                  // 기타 비디오들 (플레이스홀더)
+                  return (
+                    <div className="video-placeholder">
+                      <div className="icon"><Icon type="video" /></div>
+                      <div>
+                        <h3>영상 재생</h3>
+                        <p>실제 서비스에서는 YouTube 또는<br />Vimeo 영상이 재생됩니다</p>
+                        <p style={{ color: 'var(--primary-color)', fontWeight: 600, marginTop: '1rem' }}>
+                          선택된 영상: {videoInfo?.title}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  );
+                })()}
               </motion.div>
             </Modal>
           )}
