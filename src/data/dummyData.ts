@@ -21,6 +21,7 @@ export const navigationMenu = [
     subMenu: [
       { title: "히스토리", href: "/about/history" },
       { title: "영상", href: "/about/video" },
+      { title: "조직도", href: "/about/organization" },
     ],
   },
   {

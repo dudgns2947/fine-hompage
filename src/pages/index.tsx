@@ -94,8 +94,26 @@ export default function Home() {
         </video>
       </OpeningVideoSection>
       <HeroSection />
+      <ImageContainer>
+        <Image src="/image/history.png" alt="FINE" />
+      </ImageContainer>
       <ServicesSection />
+      <ImageContainer>
+        <Image src="/image/history-2.png" alt="FINE" />
+      </ImageContainer>
       <StatsSection />
     </Layout>
   );
 }
+
+const ImageContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
