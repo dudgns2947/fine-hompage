@@ -399,6 +399,7 @@ const Footer: React.FC = () => {
               <NavColumn>
                 <h5><Link href="/about">본부소개</Link></h5>
                 <ul>
+                  <li><Link href="/about/identity">아이덴티티</Link></li>
                   <li><Link href="/about/history">히스토리</Link></li>
                   <li><Link href="/about/video">영상</Link></li>
                   <li><Link href="/about/organization">조직도</Link></li>

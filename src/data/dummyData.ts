@@ -1,12 +1,12 @@
 // 회사 정보 (사업자등록증 기반)
 export const companyInfo = {
   name: "FINE",
-  fullName: "굿리치 주식회사",
+  fullName: "Dynamic FINE",
   description: "신뢰할 수 있는 보험 파트너",
-  address: "서울특별시 강남구 테헤란로 123",
-  phone: "02-1234-5678",
-  email: "info@dynamicfine.co.kr",
-  established: "2006",
+  address: "대전 유성구 114, BYC빌딩 905~906호",
+  phone: "010.6787.0501",
+  email: "ij0143@goodrich.co.kr",
+  established: "2019",
   businessNumber: "120-86-60433",
   representative: "서울특별시 중구 세종대로 44, 제휴센터",
   businessType: "서울특별시 중구 세종대로/보험설계/자동차관리",
@@ -19,6 +19,7 @@ export const navigationMenu = [
     title: "본부소개",
     href: "/about",
     subMenu: [
+      { title: "아이덴티티", href: "/about/identity" },
       { title: "히스토리", href: "/about/history" },
       { title: "영상", href: "/about/video" },
       { title: "조직도", href: "/about/organization" },

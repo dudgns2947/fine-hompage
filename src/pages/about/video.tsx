@@ -326,8 +326,8 @@ const Modal = styled(motion.div)`
 const introVideos = [
   {
     id: 'intro-1',
-    title: 'Fine 소개영상-1',
-    description: 'FINE의 첫 번째 소개 영상입니다. 회사의 핵심 가치와 비전을 소개합니다.',
+    title: '본부 승격식',
+    description: '파인본부 승격식 현장을 담은 영상입니다. 새로운 시작과 도전의 순간을 함께하세요.',
     duration: '2:30',
     date: '2025.01.20',
     views: '856',
@@ -335,8 +335,8 @@ const introVideos = [
   },
   {
     id: 'intro-2',
-    title: 'Fine 소개영상-2',
-    description: 'FINE의 두 번째 소개 영상입니다. 주요 서비스와 고객 혜택을 안내합니다.',
+    title: '25년 시무식',
+    description: '2025년 새해 시무식 영상입니다. 새로운 다짐과 비전을 공유합니다.',
     duration: '3:15',
     date: '2025.01.19',
     views: '742',
@@ -344,12 +344,21 @@ const introVideos = [
   },
   {
     id: 'intro-3',
-    title: 'Fine 소개영상-3',
-    description: 'FINE의 세 번째 소개 영상입니다. 미래 계획과 고객과의 약속을 전달합니다.',
+    title: '파인본부 주제가',
+    description: '파인본부만의 특별한 주제가를 소개합니다. 함께 부르며 하나 되는 순간을 경험하세요.',
     duration: '2:45',
     date: '2025.01.18',
     views: '623',
     videoSrc: '/video/Intro-3.mp4'
+  },
+  {
+    id: 'intro-4',
+    title: '파인본부 소개영상',
+    description: '파인본부의 모든 것을 담은 공식 소개영상입니다. 우리의 가치와 미래를 확인하세요.',
+    duration: '4:12',
+    date: '2025.01.17',
+    views: '1,234',
+    videoSrc: '/video/careerIntroduce.mp4'
   }
 ];
 

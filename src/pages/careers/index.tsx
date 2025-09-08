@@ -247,33 +247,28 @@ const JobCard = styled(motion.div)`
 const benefits = [
   {
     icon: <Icon type="money" />,
-    title: '경쟁력 있는 연봉',
+    title: '경쟁력있는 연봉',
     description: '업계 최고 수준의 연봉과 성과급을 제공합니다.'
   },
   {
-    icon: <Icon type="heartbeat" />,
-    title: '복리후생',
-    description: '건강검진, 의료비 지원, 휴양시설 이용 등 다양한 혜택을 제공합니다.'
-  },
-  {
     icon: <Icon type="graduation" />,
-    title: '교육 지원',
-    description: '전문성 향상을 위한 교육비 지원과 자격증 취득을 도와드립니다.'
-  },
-  {
-    icon: <Icon type="clock" />,
-    title: '워라밸',
-    description: '유연근무제와 재택근무를 통해 일과 삶의 균형을 지원합니다.'
+    title: '교육부 운영',
+    description: '전문성 향상을 위한 파인본부 자체 교육부 운영'
   },
   {
     icon: <Icon type="rocket" />,
-    title: '성장 기회',
-    description: '빠른 승진 기회와 다양한 프로젝트 참여 기회를 제공합니다.'
+    title: '성장기회',
+    description: '빠른 성장과 다양한 디비프로젝트 참여기회 제공'
   },
   {
-    icon: <Icon type="bullseye" />,
-    title: '성과 인센티브',
-    description: '목표 달성 시 추가 인센티브와 포상을 제공합니다.'
+    icon: <Icon type="database" />,
+    title: '디비사업부',
+    description: '차별화된 본부자체 디비사업부 운영 및 다채로운 제휴 디비 활용 및 제공'
+  },
+  {
+    icon: <Icon type="chartline" />,
+    title: '직급별 성장 교육시스템 운영',
+    description: '체계적인 직급별 성장 교육 프로그램을 통한 전문성 향상'
   }
 ];
 
