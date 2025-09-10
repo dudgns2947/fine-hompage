@@ -228,8 +228,8 @@ export const branches = [
     phone: "053-219-0068",
     manager: "한혜규 지점장",
     region: "대구",
-    lat: 35.8571,
-    lng: 128.6308,
+    lat: 35.852510,
+    lng: 128.624613,
   },
   {
     id: 11,
