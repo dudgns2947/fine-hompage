@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Layout from '@/components/Layout/Layout';
@@ -6,6 +6,7 @@ import SEO from '@/components/common/SEO';
 import Button from '@/components/common/Button';
 import { companyInfo } from '@/data/dummyData';
 import Icon from '@/components/common/Icon';
+import KakaoMap from '@/components/common/KakaoMap';
 
 const DirectionsContainer = styled.div`
   min-height: 100vh;
@@ -63,34 +64,11 @@ const MapContent = styled.div`
 `;
 
 const MapContainer = styled.div`
-  background: var(--bg-secondary);
+  background: white;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
-  padding: 2rem;
-  min-height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  font-size: 1.125rem;
-  text-align: center;
-
-  .map-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-
-    .icon {
-      font-size: 4rem;
-      color: var(--primary-color);
-    }
-
-    h3 {
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-    }
-  }
+  overflow: hidden;
+  height: 400px;
 `;
 
 const InfoSection = styled.div`
@@ -224,24 +202,26 @@ const transportMethods = [
   {
     icon: '🚇',
     title: '지하철',
-    routes: ['2호선 강남역 3번 출구', '9호선 신논현역 1번 출구'],
-    info: '강남역에서 도보 5분\n신논현역에서 도보 3분'
+    routes: ['대전지하철 1호선 정부청역', '대전지하철 1호선 시청역'],
+    info: '정부청역에서 도보 10분\n시청역에서 도보 15분'
   },
   {
     icon: '🚌',
     title: '버스',
-    routes: ['간선: 146, 360, 740', '지선: 3412, 6411'],
-    info: '강남역 정류장 하차\n도보 5분 거리'
+    routes: ['간선: 102, 103, 104', '지선: 911, 912'],
+    info: 'BYC빌딩 정류장 하차\n도보 2분 거리'
   },
   {
     icon: '🚗',
     title: '자가용',
-    routes: ['네비게이션: 서울 강남구 테헤란로 123'],
-    info: '지하 주차장 이용 가능\n2시간 무료 주차'
+    routes: ['네비게이션: 대전 유성구 계룡로 114'],
+    info: '빌딩 지하 주차장 이용\n방문 시 주차 가능'
   }
 ];
 
 const Directions: React.FC = () => {
+  const [selectedBranch] = useState<number | null>(1);
+  
   return (
     <Layout>
       <SEO 
@@ -265,7 +245,7 @@ const Directions: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              FINE 본사로 오시는 길을 안내해드립니다.
+              FINE 본사로 오시는 길을 안내해드립니다. <br/>
               다양한 교통편을 이용하여 편리하게 방문하세요.
             </motion.p>
           </HeroContent>
@@ -274,16 +254,22 @@ const Directions: React.FC = () => {
         <MapSection>
           <MapContent>
             <MapContainer>
-              <div className="map-placeholder">
-                <div className="icon"><Icon type="map" /></div>
-                <div>
-                  <h3>지도 서비스</h3>
-                  <p>실제 서비스에서는 Google Maps 또는<br />네이버 지도 API를 연동합니다</p>
-                  <p style={{ color: 'var(--primary-color)', fontWeight: 600, marginTop: '1rem' }}>
-                    <Icon type="mapmarker" style={{ marginRight: '0.5rem' }} />{companyInfo.address}
-                  </p>
-                </div>
-              </div>
+              <KakaoMap 
+                branches={[{
+                  id: 1,
+                  name: companyInfo.fullName,
+                  address: companyInfo.address,
+                  phone: companyInfo.phone,
+                  manager: "최미라 본부장",
+                  region: "대전",
+                  lat: companyInfo.lat,
+                  lng: companyInfo.lng,
+                }]}
+                selectedBranch={1}
+                onBranchSelect={() => {}}
+                width="100%"
+                height="100%"
+              />
             </MapContainer>
 
             <InfoSection>

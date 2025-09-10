@@ -87,7 +87,7 @@ const SearchInput = styled.input`
 `;
 
 const MapSection = styled.section`
-  padding: 3rem 0;
+  padding: 2rem 0;
   background: var(--bg-secondary);
 `;
 
@@ -110,7 +110,7 @@ const MapWrapper = styled.div`
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   overflow: hidden;
-  min-height: 500px;
+  height: 500px;
 `;
 
 const BranchList = styled.div`
@@ -281,7 +281,7 @@ const Locations: React.FC = () => {
                 selectedBranch={selectedBranch}
                 onBranchSelect={setSelectedBranch}
                 width="100%"
-                height="500px"
+                height="100%"
               />
             </MapWrapper>
 

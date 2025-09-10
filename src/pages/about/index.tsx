@@ -365,7 +365,7 @@ const About: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              {companyInfo.description}을 목표로 2010년부터 고객과 함께 성장해온 FINE입니다.
+              {companyInfo.description}을 목표로 2010년부터 고객과 함께 성장해온 FINE입니다. <br/>
               전문성과 신뢰를 바탕으로 고객의 안전한 미래를 보장합니다.
             </motion.p>
             <motion.div
@@ -450,7 +450,7 @@ const About: React.FC = () => {
               "고객의 행복한 미래를 위한 든든한 동반자가 되겠습니다"
               <br /><br />
               FINE은 단순한 보험 판매를 넘어, 고객의 인생 전반에 걸친 
-              리스크 관리 파트너로서 최고의 서비스를 제공하겠습니다.
+              리스크 관리 파트너로서 <br/> 최고의 서비스를 제공하겠습니다.
             </motion.p>
             
             <div style={{ 

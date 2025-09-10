@@ -358,7 +358,7 @@ const Consultation: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              전문 상담사가 고객님의 상황에 맞는 최적의 보험을 추천해드립니다.
+              전문 상담사가 고객님의 상황에 맞는 최적의 보험을 추천해드립니다. <br/>
               부담 없는 무료 상담으로 시작하세요.
             </motion.p>
           </HeroContent>

@@ -348,7 +348,7 @@ const Inquiry: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              궁금한 점이나 제휴 제안이 있으시면 언제든 연락주세요.
+              궁금한 점이나 제휴 제안이 있으시면 언제든 연락주세요. <br/>
               전문 상담사가 신속하고 정확하게 답변드리겠습니다.
             </motion.p>
           </HeroContent>

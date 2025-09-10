@@ -3,7 +3,7 @@ export const companyInfo = {
   name: "FINE",
   fullName: "Dynamic FINE",
   description: "신뢰할 수 있는 보험 파트너",
-  address: "대전 유성구 114, BYC빌딩 905~906호",
+  address: "대전광역시 유성구 계룡로 114, BYC빌딩 9층 905-6호 굿리치",
   phone: "010.6787.0501",
   email: "ij0143@goodrich.co.kr",
   established: "2019",
@@ -11,6 +11,8 @@ export const companyInfo = {
   representative: "서울특별시 중구 세종대로 44, 제휴센터",
   businessType: "서울특별시 중구 세종대로/보험설계/자동차관리",
   businessItem: "보험업 및 중개업/금융/투자자문",
+  lat: 36.352704,
+  lng: 127.342974,
 };
 
 export const navigationMenu = [
@@ -133,8 +135,8 @@ export const branches = [
     phone: "010-6787-0501",
     manager: "최미라 본부장",
     region: "대전",
-    lat: 36.3664,
-    lng: 127.3447,
+    lat: 36.352704,
+    lng: 127.342974,
   },
   {
     id: 2,
@@ -143,8 +145,8 @@ export const branches = [
     phone: "042-382-0138",
     manager: "김상란 지점장",
     region: "대전",
-    lat: 36.3664,
-    lng: 127.3447,
+    lat: 36.352704,
+    lng: 127.342974,
   },
   {
     id: 3,
@@ -153,8 +155,8 @@ export const branches = [
     phone: "042-382-0138",
     manager: "박효진 지점장",
     region: "대전",
-    lat: 36.3664,
-    lng: 127.3447,
+    lat: 36.352704,
+    lng: 127.342974,
   },
   {
     id: 4,
@@ -163,8 +165,8 @@ export const branches = [
     phone: "042-382-0138",
     manager: "박재형 지점장",
     region: "대전",
-    lat: 36.3664,
-    lng: 127.3447,
+    lat: 36.352704,
+    lng: 127.342974,
   },
   {
     id: 5,
@@ -173,8 +175,8 @@ export const branches = [
     phone: "042-382-0138",
     manager: "이래철 지점장",
     region: "대전",
-    lat: 36.3664,
-    lng: 127.3447,
+    lat: 36.352704,
+    lng: 127.342974,
   },
   {
     id: 6,
@@ -183,8 +185,8 @@ export const branches = [
     phone: "042-382-0138",
     manager: "황동현 지점장",
     region: "대전",
-    lat: 36.3664,
-    lng: 127.3447,
+    lat: 36.352704,
+    lng: 127.342974,
   },
   // 서울경기
   {
@@ -194,8 +196,8 @@ export const branches = [
     phone: "010-8897-7191",
     manager: "김상훈 지점장",
     region: "서울경기",
-    lat: 36.9922,
-    lng: 127.1305,
+    lat: 37.026398,
+    lng: 127.014699,
   },
   // 전주
   {
@@ -205,8 +207,8 @@ export const branches = [
     phone: "063-903-3005",
     manager: "김민수 지점장",
     region: "전주",
-    lat: 35.8242,
-    lng: 127.1480,
+    lat: 35.815555,
+    lng: 127.106452,
   },
   {
     id: 9,
@@ -215,8 +217,8 @@ export const branches = [
     phone: "063-903-3005",
     manager: "김유신 지점장",
     region: "전주",
-    lat: 35.8242,
-    lng: 127.1480,
+    lat: 35.815555,
+    lng: 127.106452,
   },
   // 대구
   {
@@ -226,8 +228,8 @@ export const branches = [
     phone: "053-219-0068",
     manager: "한혜규 지점장",
     region: "대구",
-    lat: 35.8714,
-    lng: 128.6014,
+    lat: 35.8571,
+    lng: 128.6308,
   },
   {
     id: 11,
@@ -236,8 +238,8 @@ export const branches = [
     phone: "053-219-0068",
     manager: "남대영 단장",
     region: "대구",
-    lat: 35.8714,
-    lng: 128.6014,
+    lat: 35.852510,
+    lng: 128.624613,
   },
   {
     id: 12,
@@ -246,8 +248,8 @@ export const branches = [
     phone: "010-4215-0926",
     manager: "이왕재 지점장",
     region: "대구",
-    lat: 35.8714,
-    lng: 128.6014,
+    lat: 35.852510,
+    lng: 128.624613,
   },
   {
     id: 13,
@@ -256,8 +258,8 @@ export const branches = [
     phone: "053-219-0068",
     manager: "한동희 지점장",
     region: "대구",
-    lat: 35.8714,
-    lng: 128.6014,
+    lat: 35.852510,
+    lng: 128.624613,
   },
   {
     id: 14,
@@ -266,8 +268,8 @@ export const branches = [
     phone: "010-3032-1578",
     manager: "예정민 지점장",
     region: "대구",
-    lat: 35.8714,
-    lng: 128.6014,
+    lat: 35.852510,
+    lng: 128.624613,
   },
 ];
 

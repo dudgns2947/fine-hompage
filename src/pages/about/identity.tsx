@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import Layout from '@/components/Layout/Layout';
 import SEO from '@/components/common/SEO';
 import Image from 'next/image';
+import { FaCrown, FaUsers } from 'react-icons/fa';
+import { IoIosArrowUp } from 'react-icons/io';
 
 const IdentityContainer = styled.div`
   min-height: 100vh;
@@ -523,39 +525,44 @@ const ValueCard = styled(motion.div)`
 const identityConcepts = [
   {
     title: "Dynamic",
-    icon: "👑",
+    icon: FaCrown,
+    iconColor: "#FFD700",
     description: "다이나믹(Dynamic)의 소문자 i 위 점은 왕관(Crown)으로 표현,",
     description2: "왕관은 최고를 향한 도전과 리더십을 상징하며,",
     description3: "역동적이고 탁월함을 추구하는 '다이나믹'의 정신을 나타냅니다.",
-    imagePlaceholder: "Dynamic Img(추후 첨부 예정)"
+    imageUrl: "/image/dynamic.png"
   },
   {
     title: "FINE",
-    icon: "🧑",
+    icon: FaUsers,
+    iconColor: "#0984E3",
     description: "파인(FINE)의 소문자 i는 사람 모양(Human figure)으로 형상화,",
     description2: "파인은 사람 중심의 가치를 담고 있으며,",
     description3: "한 사람 한 사람의 꿈과 성장이 모여 조직이 완성된다는 의미를 담고 있습니다.",
-    imagePlaceholder: "FINE Img(추후 첨부 예정)"
+    imageUrl: "/image/fine.png"
   }
 ];
 
 const motifData = [
   {
-    icon: "👑",
+    icon: FaCrown,
+    iconColor: "#FFD700",
     title: "왕관",
     subtitle: "Our Vision",
     description: "최고를 지향하는 조직",
     details: ["역동적인 성장", "업계의 리더십 강화"]
   },
   {
-    icon: "🧑",
+    icon: FaUsers,
+    iconColor: "#0984E3",
     title: "사람",
     subtitle: "",
     description: "한 명 한 명의 가치 존중",
     details: ["한 사람 한 사람의 꿈이 모여 다이나믹 파인이 완성됩니다", "우리는 사람을 소중히 하는 조직 문화를 추구합니다"]
   },
   {
-    icon: "📈",
+    icon: IoIosArrowUp,
+    iconColor: "#00B894",
     title: "성장",
     subtitle: "",
     description: "함께 이루는 미래",
@@ -658,22 +665,31 @@ const Identity: React.FC = () => {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.02 }}
                 >
-                  <span className="icon">{concept.icon}</span>
+                  <concept.icon className="icon" style={{ fontSize: '3rem', color: concept.iconColor }} />
                   <div className="title">{concept.title}</div>
                   
-                  <div className="image-placeholder" style={{
+                  <div style={{
                     background: 'var(--bg-secondary)',
                     padding: '2rem',
                     borderRadius: 'var(--border-radius)',
                     margin: '1.5rem 0',
-                    border: '2px dashed var(--primary-color)',
-                    opacity: '0.7',
                     textAlign: 'center',
-                    fontSize: '0.9rem',
-                    color: 'var(--text-secondary)',
-                    fontStyle: 'italic'
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    minHeight: '200px'
                   }}>
-                    {concept.imagePlaceholder}
+                    <Image
+                      src={concept.imageUrl}
+                      alt={`${concept.title} 컨셉 이미지`}
+                      width={300}
+                      height={150}
+                      style={{ 
+                        objectFit: 'contain',
+                        maxWidth: '100%',
+                        height: 'auto'
+                      }}
+                    />
                   </div>
                   
                   <div className="description">
@@ -724,7 +740,7 @@ const Identity: React.FC = () => {
                 maxWidth: '700px',
                 margin: '0 auto'
               }}>
-                로고의 가독성과 조화를 위해 제작된 전용 로고타입입니다. 
+                로고의 가독성과 조화를 위해 제작된 전용 로고타입입니다. <br/>
                 로고 주변에는 충분한 여백을 유지하여 브랜드 아이덴티티가 
                 명확하게 인식될 수 있도록 합니다.
               </p>
@@ -755,7 +771,7 @@ const Identity: React.FC = () => {
                       viewport={{ once: true }}
                       whileHover={{ scale: 1.05 }}
                     >
-                      <span className="motif-icon">{motif.icon}</span>
+                      <motif.icon className="motif-icon" style={{ fontSize: '4rem', color: motif.iconColor }} />
                       <div className="motif-title">{motif.title}</div>
                       {motif.subtitle && (
                         <div className="motif-subtitle">{motif.subtitle}</div>
@@ -908,7 +924,7 @@ const Identity: React.FC = () => {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
               >
-                <span className="symbol">👑</span>
+                <FaCrown className="symbol" style={{ fontSize: '4rem', color: '#FFD700' }} />
                 <div className="title">왕관</div>
                 <div className="subtitle">최고를 지향하는 도전</div>
                 <div className="description">
@@ -924,7 +940,7 @@ const Identity: React.FC = () => {
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.05 }}
               >
-                <span className="symbol">🧑</span>
+                <FaUsers className="symbol" style={{ fontSize: '4rem', color: '#0984E3' }} />
                 <div className="title">사람</div>
                 <div className="subtitle">구성원 중심의 소중함</div>
                 <div className="description">

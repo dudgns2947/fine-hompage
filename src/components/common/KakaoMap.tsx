@@ -275,7 +275,7 @@ const KakaoMap: React.FC<KakaoMapProps> = ({
 
       console.log('맵 컨테이너 확인 완료, 지도 생성 중...');
       // 대전을 기본 중심으로 설정 (가장 많은 지점이 있는 지역)
-      const defaultCenter = new window.kakao.maps.LatLng(36.3664, 127.3447);
+      const defaultCenter = new window.kakao.maps.LatLng(36.3516, 127.2981);
       
       const mapOptions = {
         center: defaultCenter,

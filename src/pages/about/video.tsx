@@ -458,7 +458,7 @@ const VideoPage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              FINE의 다양한 이야기를 영상으로 만나보세요.
+              FINE의 다양한 이야기를 영상으로 만나보세요. <br/>
               회사 소개부터 상품 안내까지 한눈에 확인할 수 있습니다.
             </motion.p>
           </HeroContent>
