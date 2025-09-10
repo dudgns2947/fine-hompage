@@ -5,6 +5,7 @@ import Layout from '@/components/Layout/Layout';
 import SEO from '@/components/common/SEO';
 import Button from '@/components/common/Button';
 import Icon from '@/components/common/Icon';
+import KakaoMap from '@/components/common/KakaoMap';
 import { branches } from '@/data/dummyData';
 
 const LocationsContainer = styled.div`
@@ -104,30 +105,12 @@ const MapContent = styled.div`
   }
 `;
 
-const MapContainer = styled.div`
+const MapWrapper = styled.div`
   background: white;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
-  padding: 2rem;
+  overflow: hidden;
   min-height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-secondary);
-  font-size: 1.125rem;
-  text-align: center;
-
-  .map-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-
-    .icon {
-      font-size: 4rem;
-      color: var(--primary-color);
-    }
-  }
 `;
 
 const BranchList = styled.div`
@@ -185,7 +168,8 @@ const BranchCard = styled(motion.div)<{ selected: boolean }>`
       color: var(--text-secondary);
 
       .icon {
-        color: var(--primary-color);
+        color: var(--text-primary);
+        opacity: 0.7;
       }
     }
   }
@@ -228,12 +212,13 @@ const Locations: React.FC = () => {
   const [selectedBranch, setSelectedBranch] = useState<number | null>(null);
   const [activeFilter, setActiveFilter] = useState('전체');
 
-  const regions = ['전체', '서울', '부산', '대구', '인천'];
+  const regions = ['전체', '대전', '서울경기', '전주', '대구'];
   
   const filteredBranches = branches.filter(branch => {
     const matchesSearch = branch.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         branch.address.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesFilter = activeFilter === '전체' || branch.address.includes(activeFilter);
+                         branch.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         branch.manager.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = activeFilter === '전체' || branch.region === activeFilter;
     return matchesSearch && matchesFilter;
   });
 
@@ -246,7 +231,7 @@ const Locations: React.FC = () => {
     <Layout>
       <SEO 
         title="지점찾기 - FINE"
-        description="가까운 FINE 지점을 찾아보세요. 전국 지점 정보와 위치, 연락처를 확인할 수 있습니다."
+        description="가까운 FINE 본부를 찾아보세요. 전국 지점 정보와 위치, 연락처를 확인할 수 있습니다."
         keywords="FINE, 지점찾기, 지점위치, 지점정보, 매장찾기"
       />
       
@@ -258,7 +243,7 @@ const Locations: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              가까운 <span className="highlight">FINE 지점</span>을<br />
+              가까운 <span className="highlight">FINE 본부</span>를<br />
               찾아보세요
             </motion.h1>
             <motion.p
@@ -266,7 +251,7 @@ const Locations: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              전국 어디서나 편리하게 방문할 수 있는 FINE 지점을 찾아보세요.
+              전국 어디서나 편리하게 방문할 수 있는 FINE 본부를 찾아보세요.
             </motion.p>
           </HeroContent>
         </HeroSection>
@@ -282,7 +267,7 @@ const Locations: React.FC = () => {
                 onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
               />
               <Button onClick={handleSearch}>
-                <Icon type="search" style={{ marginRight: '0.5rem' }} />검색
+                <Icon type="search" style={{ marginRight: '0.5rem', color: 'white' }} />검색
               </Button>
             </SearchForm>
           </SearchContent>
@@ -290,35 +275,74 @@ const Locations: React.FC = () => {
 
         <MapSection>
           <MapContent>
-            <MapContainer>
-              <div className="map-placeholder">
-                <div className="icon"><Icon type="map" /></div>
-                <div>
-                  <h3>지도 서비스</h3>
-                  <p>실제 서비스에서는 Google Maps 또는<br />네이버 지도 API를 연동합니다</p>
-                  {selectedBranch && (
-                    <p style={{ color: 'var(--primary-color)', fontWeight: 600, marginTop: '1rem' }}>
-                      선택된 지점: {branches.find(b => b.id === selectedBranch)?.name}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </MapContainer>
+            <MapWrapper>
+              <KakaoMap 
+                branches={filteredBranches}
+                selectedBranch={selectedBranch}
+                onBranchSelect={setSelectedBranch}
+                width="100%"
+                height="500px"
+              />
+            </MapWrapper>
 
             <div>
               <FilterSection>
                 <FilterTabs>
-                  {regions.map((region) => (
-                    <FilterTab
-                      key={region}
-                      active={activeFilter === region}
-                      onClick={() => setActiveFilter(region)}
-                    >
-                      {region}
-                    </FilterTab>
-                  ))}
+                  {regions.map((region) => {
+                    const regionCount = region === '전체' 
+                      ? branches.length 
+                      : branches.filter(b => b.region === region).length;
+                    
+                    return (
+                      <FilterTab
+                        key={region}
+                        active={activeFilter === region}
+                        onClick={() => setActiveFilter(region)}
+                      >
+                        {region} ({regionCount})
+                      </FilterTab>
+                    );
+                  })}
                 </FilterTabs>
               </FilterSection>
+
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '1rem',
+                padding: '0.5rem 0',
+                borderBottom: '1px solid var(--border-color)'
+              }}>
+                <span style={{ 
+                  fontSize: '0.9rem', 
+                  color: 'var(--text-secondary)' 
+                }}>
+                  {activeFilter === '전체' ? '전체 지점' : `${activeFilter} 지역`} 
+                  <strong style={{ color: 'var(--primary-color)', marginLeft: '0.5rem' }}>
+                    {filteredBranches.length}개 지점
+                  </strong>
+                </span>
+                <div style={{ 
+                  fontSize: '0.8rem', 
+                  color: 'var(--text-secondary)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.25rem'
+                }}>
+                  {searchTerm && (
+                    <span>
+                      &quot;{searchTerm}&quot; 검색 결과
+                    </span>
+                  )}
+                  {!searchTerm && (
+                    <>
+                      <Icon type="search" style={{ color: 'var(--text-secondary)', opacity: 0.7 }} />
+                      지점을 클릭하면 지도에서 확인
+                    </>
+                  )}
+                </div>
+              </div>
 
               <BranchList>
                 {filteredBranches.map((branch, index) => (
@@ -334,14 +358,25 @@ const Locations: React.FC = () => {
                     <div className="branch-header">
                       <div>
                         <h3>{branch.name}</h3>
+                        <div style={{ 
+                          fontSize: '0.8rem', 
+                          color: 'var(--primary-color)', 
+                          fontWeight: '600',
+                          marginTop: '0.25rem'
+                        }}>
+                          {branch.region}
+                        </div>
                       </div>
-                      <div className="distance">1.2km</div>
+                      <div className="distance">
+                        <Icon type="mapmarker" style={{ fontSize: '0.8rem', marginRight: '0.25rem', color: 'white' }} />
+                        {branch.region}
+                      </div>
                     </div>
                     
                     <div className="branch-info">
                       <div className="info-item">
                         <span className="icon"><Icon type="mapmarker" /></span>
-                        <span>{branch.address}</span>
+                        <span style={{ fontSize: '0.9rem', lineHeight: '1.4' }}>{branch.address}</span>
                       </div>
                       <div className="info-item">
                         <span className="icon"><Icon type="phone" /></span>
@@ -353,12 +388,16 @@ const Locations: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="branch-actions">
-                      <Button variant="outline" size="small">
-                        <Icon type="phone" style={{ marginRight: '0.5rem' }} />전화하기
+                    <div className="branch-actions" onClick={(e) => e.stopPropagation()}>
+                      <Button variant="outline" size="small" onClick={() => {
+                        window.open(`tel:${branch.phone}`);
+                      }}>
+                        <Icon type="phone" style={{ marginRight: '0.5rem', color: 'var(--primary-color)' }} />전화하기
                       </Button>
-                      <Button variant="outline" size="small">
-                        <Icon type="directions" style={{ marginRight: '0.5rem' }} />길찾기
+                      <Button variant="outline" size="small" onClick={() => {
+                        window.open(`https://map.kakao.com/link/search/${encodeURIComponent(branch.address)}`);
+                      }}>
+                        <Icon type="directions" style={{ marginRight: '0.5rem', color: 'var(--primary-color)' }} />길찾기
                       </Button>
                     </div>
                   </BranchCard>
@@ -375,7 +414,7 @@ const Locations: React.FC = () => {
                     color: 'var(--text-secondary)'
                   }}
                 >
-                  <div style={{ fontSize: '3rem', marginBottom: '1rem' }}><Icon type="search" /></div>
+                  <div style={{ fontSize: '3rem', marginBottom: '1rem', color: 'var(--text-secondary)', opacity: 0.6 }}><Icon type="search" /></div>
                   <h3>검색 결과가 없습니다</h3>
                   <p>다른 검색어로 시도해보세요</p>
                 </motion.div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import Layout from '@/components/Layout/Layout';
 import SEO from '@/components/common/SEO';
 import HeroSection from '@/components/sections/HeroSection';
@@ -72,6 +73,86 @@ const OpeningVideoSection = styled.section`
   }
 `;
 
+const SloganSection = styled.section`
+  padding: 5rem 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 107, 53, 0.1) 0%, 
+    rgba(44, 62, 80, 0.05) 100%
+  );
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23FF6B35" opacity="0.1"/></svg>') repeat;
+    z-index: 0;
+  }
+
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+`;
+
+const SloganContent = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+`;
+
+const SloganText = styled(motion.h2)`
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+  position: relative;
+  
+  span {
+    color: var(--primary-color);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    &::after {
+      width: 60px;
+      height: 3px;
+      bottom: -8px;
+    }
+  }
+`;
+
+const SloganSubtext = styled(motion.p)`
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary);
+  margin-top: 2rem;
+  line-height: 1.6;
+  font-style: italic;
+  opacity: 0.8;
+`;
+
 export default function Home() {
   return (
     <Layout>
@@ -93,6 +174,28 @@ export default function Home() {
           브라우저가 비디오를 지원하지 않습니다.
         </video>
       </OpeningVideoSection>
+      
+      <SloganSection>
+        <SloganContent>
+          <SloganText
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <span>최고</span>를 향한 도전 <br/><span>사람</span>을 향한 가치
+          </SloganText>
+          <SloganSubtext
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Dynamic FINE이 추구하는 핵심 가치
+          </SloganSubtext>
+        </SloganContent>
+      </SloganSection>
+      
       <HeroSection />
       <ImageContainer>
         <Image src="/image/history.png" alt="FINE" />

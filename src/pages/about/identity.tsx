@@ -155,44 +155,76 @@ const GraphicMotifContent = styled.div`
 `;
 
 const MotifDisplay = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 3rem 0;
-  padding: 3rem;
-  background: white;
-  border-radius: var(--border-radius);
-  box-shadow: var(--shadow);
-
-  .cross-motif {
+  
+  .motif-grid {
     display: grid;
-    grid-template-columns: repeat(3, 60px);
-    grid-template-rows: repeat(3, 60px);
-    gap: 4px;
-
-    .motif-block {
-      background: var(--primary-color);
-      border-radius: 8px;
-      
-      &.empty {
-        background: transparent;
-      }
-
-      &:nth-child(1),
-      &:nth-child(3),
-      &:nth-child(7),
-      &:nth-child(9) {
-        background: transparent;
-      }
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
   }
+`;
 
+const MotifCard = styled(motion.div)`
+  background: white;
+  border-radius: var(--border-radius);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+  text-align: center;
+  transition: var(--transition);
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+  
   @media (max-width: 768px) {
     padding: 2rem;
+  }
+  
+  .motif-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .motif-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  .motif-subtitle {
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+  
+  .motif-description {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+  
+  .motif-details {
+    color: var(--text-secondary);
+    line-height: 1.6;
     
-    .cross-motif {
-      grid-template-columns: repeat(3, 40px);
-      grid-template-rows: repeat(3, 40px);
+    div {
+      margin-bottom: 0.8rem;
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 `;
@@ -490,34 +522,44 @@ const ValueCard = styled(motion.div)`
 
 const identityConcepts = [
   {
-    number: "1.",
-    title: "디자인 요소 설명",
-    icon: "🎨",
-    items: [
-      {
-        title: "다이나믹(Dynamic)의 소문자 i",
-        description: "위 점은 왕관(Crown)으로 표현 → 왕관은 최고를 향한 도전과 리더십을 상징하며, 역동적이고 탁월함을 추구하는 '다이나믹'의 정신을 나타냅니다."
-      },
-      {
-        title: "파인(FINE)의 소문자 i",
-        description: "사람 모양(Human figure)으로 형상화 → 파인은 사람 중심의 가치를 담고 있으며, 한 사람 한 사람의 꿈과 성장이 모여 조직이 완성된다는 의미를 담고 있습니다."
-      }
-    ]
+    title: "Dynamic",
+    icon: "👑",
+    description: "다이나믹(Dynamic)의 소문자 i 위 점은 왕관(Crown)으로 표현,",
+    description2: "왕관은 최고를 향한 도전과 리더십을 상징하며,",
+    description3: "역동적이고 탁월함을 추구하는 '다이나믹'의 정신을 나타냅니다.",
+    imagePlaceholder: "Dynamic Img(추후 첨부 예정)"
   },
   {
-    number: "2.",
-    title: "상징적 의미",
-    icon: "⭐",
-    items: [
-      {
-        title: "왕관",
-        description: "최고의 목표를 향한 끊임없는 도전, 리더로서의 자긍심"
-      },
-      {
-        title: "사람",
-        description: "구성원의 소중함, 사람을 중심에 둔 조직 문화"
-      }
-    ]
+    title: "FINE",
+    icon: "🧑",
+    description: "파인(FINE)의 소문자 i는 사람 모양(Human figure)으로 형상화,",
+    description2: "파인은 사람 중심의 가치를 담고 있으며,",
+    description3: "한 사람 한 사람의 꿈과 성장이 모여 조직이 완성된다는 의미를 담고 있습니다.",
+    imagePlaceholder: "FINE Img(추후 첨부 예정)"
+  }
+];
+
+const motifData = [
+  {
+    icon: "👑",
+    title: "왕관",
+    subtitle: "Our Vision",
+    description: "최고를 지향하는 조직",
+    details: ["역동적인 성장", "업계의 리더십 강화"]
+  },
+  {
+    icon: "🧑",
+    title: "사람",
+    subtitle: "",
+    description: "한 명 한 명의 가치 존중",
+    details: ["한 사람 한 사람의 꿈이 모여 다이나믹 파인이 완성됩니다", "우리는 사람을 소중히 하는 조직 문화를 추구합니다"]
+  },
+  {
+    icon: "📈",
+    title: "성장",
+    subtitle: "",
+    description: "함께 이루는 미래",
+    details: ["끊임없는 도전과 성취", "지속 가능한 발전"]
   }
 ];
 
@@ -545,7 +587,7 @@ const Identity: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              최고를 지향하면서도, 사람 한 명 한 명을 소중히 여기는 조직의 
+              최고를 지향하면서도, 사람 한 명 한 명을 소중히 여기는 <br/> 조직의 
               가치를 시각적으로 담아낸 브랜드 아이덴티티입니다.
             </motion.p>
           </HeroContent>
@@ -567,8 +609,8 @@ const Identity: React.FC = () => {
                 <Image
                   src="/image/logo.png"
                   alt="FINE 로고"
-                  width={400}
-                  height={120}
+                  width={500}
+                  height={200}
                   style={{ objectFit: 'contain' }}
                 />
               </LogoDisplay>
@@ -617,19 +659,33 @@ const Identity: React.FC = () => {
                   whileHover={{ scale: 1.02 }}
                 >
                   <span className="icon">{concept.icon}</span>
-                  <div className="number">{concept.number}</div>
                   <div className="title">{concept.title}</div>
+                  
+                  <div className="image-placeholder" style={{
+                    background: 'var(--bg-secondary)',
+                    padding: '2rem',
+                    borderRadius: 'var(--border-radius)',
+                    margin: '1.5rem 0',
+                    border: '2px dashed var(--primary-color)',
+                    opacity: '0.7',
+                    textAlign: 'center',
+                    fontSize: '0.9rem',
+                    color: 'var(--text-secondary)',
+                    fontStyle: 'italic'
+                  }}>
+                    {concept.imagePlaceholder}
+                  </div>
+                  
                   <div className="description">
-                    {concept.items.map((item, itemIndex) => (
-                      <div key={itemIndex} style={{ marginBottom: '1rem' }}>
-                        <div style={{ marginBottom: '0.5rem' }}>
-                          ▶ <span className="highlight-text">{item.title}</span>
-                        </div>
-                        <div style={{ paddingLeft: '1rem' }}>
-                          → {item.description}
-                        </div>
-                      </div>
-                    ))}
+                    <div style={{ marginBottom: '0.8rem' }}>
+                      {concept.description} <br/>
+                    </div>
+                    <div style={{ marginBottom: '0.8rem' }}>
+                      {concept.description2} <br/>
+                    </div>
+                    <div>
+                      {concept.description3}
+                    </div>
                   </div>
                 </ConceptCard>
               ))}
@@ -654,8 +710,8 @@ const Identity: React.FC = () => {
                   <Image
                     src="/image/logo.png"
                     alt="FINE 로고"
-                    width={300}
-                    height={90}
+                    width={400}
+                    height={200}
                     style={{ objectFit: 'contain' }}
                   />
                 </div>
@@ -689,16 +745,29 @@ const Identity: React.FC = () => {
               </SectionTitle>
               
               <MotifDisplay>
-                <div className="cross-motif">
-                  <div className="motif-block empty"></div>
-                  <div className="motif-block"></div>
-                  <div className="motif-block empty"></div>
-                  <div className="motif-block"></div>
-                  <div className="motif-block"></div>
-                  <div className="motif-block"></div>
-                  <div className="motif-block empty"></div>
-                  <div className="motif-block"></div>
-                  <div className="motif-block empty"></div>
+                <div className="motif-grid">
+                  {motifData.map((motif, index) => (
+                    <MotifCard
+                      key={index}
+                      initial={{ opacity: 0, y: 50 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.2 }}
+                      viewport={{ once: true }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <span className="motif-icon">{motif.icon}</span>
+                      <div className="motif-title">{motif.title}</div>
+                      {motif.subtitle && (
+                        <div className="motif-subtitle">{motif.subtitle}</div>
+                      )}
+                      <div className="motif-description">{motif.description}</div>
+                      <div className="motif-details">
+                        {motif.details.map((detail, detailIndex) => (
+                          <div key={detailIndex}>{detail}</div>
+                        ))}
+                      </div>
+                    </MotifCard>
+                  ))}
                 </div>
               </MotifDisplay>
 
@@ -706,13 +775,12 @@ const Identity: React.FC = () => {
                 fontSize: 'clamp(1rem, 2vw, 1.125rem)', 
                 color: 'var(--text-secondary)', 
                 lineHeight: '1.6',
-                maxWidth: '700px',
-                margin: '0 auto',
+                maxWidth: '800px',
+                margin: '2rem auto 0',
                 textAlign: 'center'
               }}>
-                Dynamic FINE의 그래픽 모티프입니다. 
-                십자가 형태의 구성으로 안정감과 신뢰성을 표현하며, 
-                각종 브랜드 어플리케이션에 활용됩니다.
+                Dynamic FINE의 핵심 가치를 시각적으로 구현한 그래픽 모티프입니다. <br/>
+                왕관, 사람, 성장이라는 3가지 요소로 우리 조직의 철학과 비전을 표현합니다.
               </p>
             </motion.div>
           </GraphicMotifContent>

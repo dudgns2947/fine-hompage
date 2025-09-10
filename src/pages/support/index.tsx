@@ -6,6 +6,7 @@ import Layout from '@/components/Layout/Layout';
 import SEO from '@/components/common/SEO';
 import Button from '@/components/common/Button';
 import Icon, { IconType } from '@/components/common/Icon';
+import { companyInfo } from '@/data/dummyData';
 
 const SupportContainer = styled.div`
   min-height: 100vh;
@@ -287,19 +288,19 @@ const contactMethods: Array<{
     icon: "phone",
     title: '전화 상담',
     info: '평일 09:00 - 18:00\n토요일 09:00 - 13:00',
-    highlight: '02-1234-5678'
+    highlight: companyInfo.phone
   },
   {
     icon: "envelope",
     title: '이메일 문의',
     info: '24시간 접수 가능\n영업일 기준 24시간 내 답변',
-    highlight: 'info@dynamicfine.co.kr'
+    highlight: companyInfo.email
   },
   {
-    icon: "rocketchat",
-    title: '실시간 채팅',
-    info: '평일 09:00 - 18:00\n즉시 상담 가능',
-    highlight: '온라인 상담'
+    icon: "mapmarker",
+    title: '방문 상담',
+    info: '평일 09:00 - 18:00\n사전 예약 필수',
+    highlight: companyInfo.address
   }
 ];
 

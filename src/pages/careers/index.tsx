@@ -305,7 +305,7 @@ const Careers: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              FINE는 열정과 전문성을 갖춘 인재와 함께 더 나은 미래를 만들어갑니다.
+              FINE는 열정과 전문성을 갖춘 인재와 함께 더 나은 미래를 만들어갑니다. <br/> 
               당신의 꿈과 목표를 실현할 수 있는 기회를 제공합니다.
             </motion.p>
             <motion.div
