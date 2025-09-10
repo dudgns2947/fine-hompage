@@ -210,7 +210,7 @@ const ServicesSection: React.FC = () => {
               <span className="highlight">맞춤형</span> 보험 서비스
             </h2>
             <p>
-              고객의 다양한 니즈에 맞는 최적의 보험 상품을 제공합니다.
+              고객의 다양한 니즈에 맞는 최적의 보험 상품을 제공합니다. <br/>
               전문 상담을 통해 가장 적합한 보장을 찾아드립니다.
             </p>
           </SectionHeader>
@@ -257,7 +257,7 @@ const ServicesSection: React.FC = () => {
           <CTASection>
             <h3>지금 바로 무료 상담을 받아보세요</h3>
             <p>
-              전문 상담사가 고객님의 상황에 맞는 최적의 보험을 추천해드립니다.
+              전문 상담사가 고객님의 상황에 맞는 최적의 보험을 추천해드립니다. <br/>
               부담 없는 무료 상담으로 시작하세요.
             </p>
             <ButtonGroup>

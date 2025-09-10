@@ -205,7 +205,7 @@ const StatsSection: React.FC = () => {
               <span className="highlight">신뢰할 수 있는</span> 성과
             </h2>
             <p>
-              숫자로 증명하는 FINE의 신뢰성과 전문성.
+              숫자로 증명하는 FINE의 신뢰성과 전문성. <br/>
               고객과 함께 성장해온 14년의 발자취입니다.
             </p>
           </SectionHeader>
