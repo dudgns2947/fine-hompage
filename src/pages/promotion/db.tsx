@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Layout from '@/components/Layout/Layout';
 import SEO from '@/components/common/SEO';
-import Button from '@/components/common/Button';
-import Icon from '@/components/common/Icon';
 
 const DbContainer = styled.div`
   min-height: 100vh;
@@ -256,129 +254,104 @@ const StatsContent = styled.div`
   }
 `;
 
-const StatsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
 
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-`;
-
-const StatCard = styled(motion.div)`
-  background: var(--bg-secondary);
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  text-align: center;
-
-  .number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 0.5rem;
-  }
-
-  .label {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-  }
-`;
-
-const services = [
+const dbIntroduction = [
   {
-    icon: <Icon type="chartline" />,
-    title: '고객 데이터 분석',
-    description: '빅데이터 기술을 활용한 고객 행동 패턴 분석 및 맞춤형 상품 추천 서비스입니다.',
-    features: [
-      '고객 세분화 분석',
-      '구매 패턴 예측',
-      '맞춤형 상품 추천',
-      '리스크 평가 모델',
-      '실시간 데이터 처리'
-    ]
+    icon: '🔄',
+    title: <>고객 발굴부터 검증·배정까지<br/>원스톱 지원</>,
+    description: <>DB사업부는 고객 발굴부터 검증·배정까지<br/>전 과정을 책임지는 본부의 핵심 지원 조직입니다.</>,
+    highlight: true
   },
   {
-    icon: '🤖',
-    title: '마케팅 자동화',
-    description: 'AI 기반 마케팅 자동화 시스템으로 효율적인 고객 관리와 영업 지원을 제공합니다.',
-    features: [
-      '자동 이메일 캠페인',
-      'SMS 마케팅',
-      '개인화된 콘텐츠',
-      '캠페인 성과 분석',
-      '리드 스코어링'
-    ]
+    icon: '🛡️',
+    title: <>투명한 배정, 검증된 품질,<br/>신속한 연결</>,
+    description: <>체계적인 검증 프로세스를 통해<br/>고품질의 DB만을 신속하게 제공합니다.</>,
+    highlight: false
   },
   {
-    icon: <Icon type="briefcase" />,
-    title: 'CRM 시스템 운영',
-    description: '통합 고객 관계 관리 시스템으로 고객 정보를 체계적으로 관리하고 서비스 품질을 향상시킵니다.',
-    features: [
-      '고객 정보 통합 관리',
-      '상담 이력 추적',
-      '계약 관리',
-      '고객 만족도 조사',
-      '모바일 앱 연동'
-    ]
-  },
-  {
-    icon: <Icon type="chartline" />,
-    title: '영업 성과 분석',
-    description: '데이터 기반의 영업 성과 분석을 통해 효과적인 영업 전략 수립을 지원합니다.',
-    features: [
-      '실시간 성과 대시보드',
-      '목표 대비 달성률',
-      '지역별 성과 분석',
-      '상품별 판매 현황',
-      '예측 분석 리포트'
-    ]
+    icon: '🚀',
+    title: <>RP 맞춤형 DB배정으로<br/>상담·계약 성공률 극대화</>,
+    description: <>각 RP의 전문분야와 지역에 맞춘<br/>최적화된 DB 배정으로 성과를 극대화합니다.</>,
+    highlight: false
   }
 ];
 
-const processSteps = [
+const dbManagementSystem = [
   {
     number: 1,
-    icon: <Icon type="file" />,
-    title: '데이터 수집',
-    description: '다양한 채널에서 고객 데이터를 수집하고 정제합니다.'
+    icon: '🕸️',
+    title: 'DB 수집 네트워크',
+    description: <>온라인/제휴 채널 다각화를 통한<br/>안정적인 DB 확보</>
   },
   {
     number: 2,
-    icon: <Icon type="search" />,
-    title: '데이터 분석',
-    description: 'AI와 머신러닝을 활용하여 데이터를 분석합니다.'
+    icon: '🔍',
+    title: '다단계 검증',
+    description: <>유효성·중복 최소화를 위한<br/>철저한 검증 시스템</>
   },
   {
     number: 3,
-    icon: <Icon type="bullseye" />,
-    title: '전략 수립',
-    description: '분석 결과를 바탕으로 맞춤형 마케팅 전략을 수립합니다.'
+    icon: '🎯',
+    title: '맞춤형 배정',
+    description: <>지역·전문분야별 최적화된<br/>DB 매칭 시스템</>
   },
   {
     number: 4,
-    icon: '🚀',
-    title: '실행 및 최적화',
-    description: '전략을 실행하고 지속적으로 성과를 모니터링합니다.'
+    icon: '📊',
+    title: '성과 모니터링',
+    description: <>활용률·계약률 지속 개선을 위한<br/>데이터 분석</>
   }
 ];
 
-const stats = [
-  { number: '500K+', label: '관리 고객 수' },
-  { number: '95%', label: '데이터 정확도' },
-  { number: '40%', label: '영업 효율 증대' },
-  { number: '24/7', label: '시스템 운영' }
+const dbNetwork = [
+  {
+    icon: '🔗',
+    title: '제휴 1~5 업체',
+    description: <>다양한 고객 DB<br/>안정 공급</>,
+    detail: <>검증된 다수의 제휴업체를 통한<br/>안정적 DB 공급망 확보</>
+  },
+  {
+    icon: '⚡',
+    title: <>본부 자체<br/>제휴 업체</>,
+    description: <>독자적 DB 생산<br/>시스템 확보</>,
+    detail: <>FINE본부만의 독점적인<br/>DB 생산 라인 구축</>
+  },
+  {
+    icon: '🏛️',
+    title: <>굿리치 본사 &<br/>DB손해보험 업무협약</>,
+    description: <>신규 DB 채널<br/>확대 예정</>,
+    detail: <>→ 멀티 제휴·자체 생산+본사 연계<br/>3중 DB 네트워크</>
+  }
+];
+
+const benefits = [
+  {
+    icon: '💎',
+    title: '안정적 DB 공급',
+    description: <>영업 초기<br/>정착률 상승</>,
+    detail: <>DB 걱정 없는 영업 환경 조성으로<br/>RP들의 빠른 정착 지원</>
+  },
+  {
+    icon: '🎯',
+    title: '효율적 관리',
+    description: <>상담 대비<br/>계약률 향상</>,
+    detail: <>체계적인 DB 관리로<br/>양질의 상담 기회 제공</>
+  },
+  {
+    icon: '📈',
+    title: '데이터 기반',
+    description: <>성과 중심<br/>영업 가능</>,
+    detail: <>검증된 데이터를 바탕으로 한<br/>전략적 영업 활동 지원</>
+  }
 ];
 
 const Db: React.FC = () => {
   return (
     <Layout>
       <SEO 
-        title="디비사업부 - FINE"
-        description="FINE 디비사업부에서 제공하는 데이터 기반 마케팅과 고객 관리 시스템을 소개합니다. AI와 빅데이터를 활용한 효율적인 영업 지원 서비스입니다."
-        keywords="FINE, 디비사업부, 데이터분석, CRM, 마케팅자동화, 빅데이터, AI"
+        title="DB사업부 - FINE"
+        description="FINE DB사업부는 체계적인 DB 관리 시스템과 독보적인 제휴 네트워크로 안정적이고 효율적인 영업 환경을 제공합니다. 고객 발굴부터 검증·배정까지 원스톱 지원으로 성과를 극대화하세요."
+        keywords="FINE, DB사업부, DB관리, 영업지원, 제휴네트워크, 고객발굴, DB배정, 영업효율화"
       />
       
       <DbContainer>
@@ -389,25 +362,16 @@ const Db: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <span className="highlight">디비사업부</span>
+              <span className="highlight">DB사업부</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              데이터 기반의 마케팅과 고객 관리 시스템으로 
-              효율적인 영업 활동을 지원합니다.
+              FINE DB사업부는  체계적인 DB 관리 시스템과<br/>
+              독보적인 제휴 네트워크로 안정적이고 효율적인 영업 환경을 제공합니다.
             </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Button size="large">
-                서비스 문의하기
-              </Button>
-            </motion.div>
           </HeroContent>
         </HeroSection>
 
@@ -419,11 +383,27 @@ const Db: React.FC = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <span className="highlight">디비 서비스</span>
+              <span className="highlight">DB사업부 소개</span>
             </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              style={{ 
+                textAlign: 'center', 
+                fontSize: '1.2rem', 
+                color: 'var(--text-secondary)', 
+                marginBottom: '3rem',
+                fontWeight: '500'
+              }}
+            >
+              DB사업부는 고객 발굴부터 검증·배정까지<br/>
+              전 과정을 책임지는 본부의 핵심 지원 조직입니다.
+            </motion.p>
             
             <ServicesGrid>
-              {services.map((service, index) => (
+              {dbIntroduction.map((item, index) => (
                 <ServiceCard
                   key={index}
                   initial={{ opacity: 0, y: 50 }}
@@ -431,20 +411,13 @@ const Db: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.02 }}
+                  style={{
+                    background: item.highlight ? 'linear-gradient(135deg, rgba(255, 107, 53, 0.05) 0%, rgba(44, 62, 80, 0.02) 100%)' : 'var(--bg-secondary)'
+                  }}
                 >
-                  <span className="icon">{service.icon}</span>
-                  <h3>{service.title}</h3>
-                  <p className="description">{service.description}</p>
-                  
-                  <ul className="features">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx}>{feature}</li>
-                    ))}
-                  </ul>
-                  
-                                <Button variant="outline" $fullWidth>
-                자세히 보기
-              </Button>
+                  <span className="icon" style={{ fontSize: '4rem' }}>{item.icon}</span>
+                  <h3>{item.title}</h3>
+                  <p className="description">{item.description}</p>
                 </ServiceCard>
               ))}
             </ServicesGrid>
@@ -459,11 +432,11 @@ const Db: React.FC = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <span className="highlight">업무 프로세스</span>
+              <span className="highlight">체계적·효율적 DB 관리 시스템</span>
             </motion.h2>
             
             <ProcessFlow>
-              {processSteps.map((step, index) => (
+              {dbManagementSystem.map((step, index) => (
                 <ProcessStep
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
@@ -490,37 +463,222 @@ const Db: React.FC = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <span className="highlight">성과 지표</span>
+              <span className="highlight">차별화된 DB 네트워크</span>
             </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              style={{ 
+                fontSize: '1.2rem', 
+                color: 'var(--text-secondary)', 
+                marginBottom: '1rem',
+                fontWeight: '600'
+              }}
+            >
+              FINE본부만의 독보적인 제휴 네트워크
+            </motion.p>
             
-            <StatsGrid>
-              {stats.map((stat, index) => (
-                <StatCard
+            <ServicesGrid style={{ marginBottom: '3rem' }}>
+              {dbNetwork.map((network, index) => (
+                <ServiceCard
                   key={index}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.02 }}
                 >
-                  <div className="number">{stat.number}</div>
-                  <div className="label">{stat.label}</div>
-                </StatCard>
+                  <span className="icon" style={{ fontSize: '4rem' }}>{network.icon}</span>
+                  <h3>{network.title}</h3>
+                  <p className="description">{network.description}</p>
+                  <p style={{ 
+                    color: 'var(--text-secondary)', 
+                    fontSize: '0.95rem', 
+                    lineHeight: '1.6',
+                    marginTop: '1rem'
+                  }}>
+                    {network.detail}
+                  </p>
+                </ServiceCard>
               ))}
-            </StatsGrid>
+            </ServicesGrid>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
+              style={{
+                background: 'linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(44, 62, 80, 0.05) 100%)',
+                padding: '2rem',
+                borderRadius: 'var(--border-radius)',
+                textAlign: 'center'
+              }}
             >
-              <Button size="large">
-                <Icon type="chartline" style={{ marginRight: '0.5rem' }} />데모 요청하기
-              </Button>
+              <h3 style={{ 
+                fontSize: '1.5rem', 
+                fontWeight: '600', 
+                color: 'var(--text-primary)',
+                marginBottom: '1rem'
+              }}>
+                멀티 제휴 + 자체 생산 + 본사 연계
+              </h3>
+              <p style={{ 
+                fontSize: '1.25rem', 
+                fontWeight: '700', 
+                color: 'var(--primary-color)'
+              }}>
+                3중 DB 네트워크 구축 완료
+              </p>
             </motion.div>
           </StatsContent>
         </StatsSection>
+
+        {/* 혜택 & 성과 섹션 */}
+        <ServicesSection>
+          <ServicesContent>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <span className="highlight">혜택 & 성과</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+              style={{ 
+                textAlign: 'center', 
+                fontSize: '1.2rem', 
+                color: 'var(--text-secondary)', 
+                marginBottom: '3rem',
+                fontWeight: '600'
+              }}
+            >
+              DB 걱정 없는 영업, 성과만 만드는 영업
+            </motion.p>
+            
+            <ServicesGrid>
+              {benefits.map((benefit, index) => (
+                <ServiceCard
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <span className="icon" style={{ fontSize: '4rem' }}>{benefit.icon}</span>
+                  <h3>{benefit.title}</h3>
+                  <p className="description" style={{ fontWeight: '600', color: 'var(--primary-color)' }}>
+                    {benefit.description}
+                  </p>
+                  <p style={{ 
+                    color: 'var(--text-secondary)', 
+                    fontSize: '0.95rem', 
+                    lineHeight: '1.6',
+                    marginTop: '1rem'
+                  }}>
+                    {benefit.detail}
+                  </p>
+                </ServiceCard>
+              ))}
+            </ServicesGrid>
+          </ServicesContent>
+        </ServicesSection>
+
+        {/* 비전 메시지 섹션 */}
+        <ProcessSection style={{ background: 'linear-gradient(135deg, rgba(255, 107, 53, 0.1) 0%, rgba(44, 62, 80, 0.05) 100%)' }}>
+          <ProcessContent style={{ textAlign: 'center' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 style={{ 
+                fontSize: 'clamp(2rem, 4vw, 3rem)', 
+                fontWeight: '700', 
+                color: 'var(--text-primary)', 
+                marginBottom: '2rem' 
+              }}>
+                <span style={{ color: 'var(--primary-color)' }}>
+                  DB는 영업의 시작이자<br/>성장의 동력입니다
+                </span>
+              </h2>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                style={{
+                  background: 'white',
+                  borderRadius: 'var(--border-radius)',
+                  padding: '3rem 2rem',
+                  boxShadow: 'var(--shadow-hover)',
+                  marginBottom: '3rem'
+                }}
+              >
+                <h3 style={{ 
+                  fontSize: '1.8rem', 
+                  fontWeight: '600', 
+                  color: 'var(--text-primary)',
+                  marginBottom: '1.5rem'
+                }}>
+                  FINE본부 DB사업부는
+                </h3>
+                <div style={{ 
+                  fontSize: '1.3rem', 
+                  lineHeight: '1.8',
+                  color: 'var(--text-secondary)'
+                }}>
+                  <motion.p
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                    viewport={{ once: true }}
+                    style={{ fontWeight: '700', color: 'var(--primary-color)', marginBottom: '0.5rem' }}
+                  >
+                    가장 빠르고,
+                  </motion.p>
+                  <motion.p
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.7 }}
+                    viewport={{ once: true }}
+                    style={{ fontWeight: '700', color: 'var(--primary-color)', marginBottom: '0.5rem' }}
+                  >
+                    가장 효율적이며,
+                  </motion.p>
+                  <motion.p
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.9 }}
+                    viewport={{ once: true }}
+                    style={{ fontWeight: '700', color: 'var(--primary-color)', marginBottom: '1rem' }}
+                  >
+                    가장 안정적인
+                  </motion.p>
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1 }}
+                    viewport={{ once: true }}
+                    style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--text-primary)' }}
+                  >
+                    영업 기회를 제공합니다.
+                  </motion.p>
+                </div>
+              </motion.div>
+            </motion.div>
+          </ProcessContent>
+        </ProcessSection>
       </DbContainer>
     </Layout>
   );
