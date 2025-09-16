@@ -543,7 +543,8 @@ const identityConcepts = [
     iconColor: "#0984E3",
     description: "파인(FINE)의 소문자 i는 사람 모양(Human figure)으로 형상화,",
     description2: "파인은 사람 중심의 가치를 담고 있으며,",
-    description3: "한 사람 한 사람의 꿈과 성장이 모여 조직이 완성된다는 의미를 담고 있습니다.",
+    description3: "한 사람 한 사람의 꿈과 성장이 모여",
+    description4: "조직이 완성된다는 의미를 담고 있습니다.",
     imageUrl: "/image/fine.png"
   }
 ];
@@ -563,7 +564,7 @@ const motifData = [
     title: "사람",
     subtitle: "",
     description: "한 명 한 명의 가치 존중",
-    details: ["한 사람 한 사람의 꿈이 모여 다이나믹 파인이 완성됩니다", "우리는 사람을 소중히 하는 조직 문화를 추구합니다"]
+    details: ["한 사람 한 사람의 꿈이 모여" ,"다이나믹 파인이 완성됩니다", "우리는 사람을 소중히 하는", "조직 문화를 추구합니다"]
   },
   {
     icon: IoIosArrowUp,
@@ -705,8 +706,11 @@ const Identity: React.FC = () => {
                     <div style={{ marginBottom: '0.8rem', textAlign: 'center' }}>
                       {concept.description2} <br/>
                     </div>
+                    <div style={{ marginBottom: '0.8rem', textAlign: 'center' }}>
+                      {concept.description3} <br/>
+                    </div>
                     <div style={{ textAlign: 'center' }}>
-                      {concept.description3}
+                      {concept.description4} <br/>
                     </div>
                   </div>
                 </ConceptCard>
