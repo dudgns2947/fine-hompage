@@ -353,6 +353,7 @@ const ConceptCard = styled(motion.div)`
   padding: 2.5rem;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  text-align: center;
 
   &:hover {
     transform: translateY(-5px);
@@ -367,6 +368,7 @@ const ConceptCard = styled(motion.div)`
     font-size: 3rem;
     margin-bottom: 1rem;
     display: block;
+    text-align: center;
   }
 
   .number {
@@ -374,6 +376,7 @@ const ConceptCard = styled(motion.div)`
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 1rem;
+    text-align: center;
   }
 
   .title {
@@ -381,6 +384,7 @@ const ConceptCard = styled(motion.div)`
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 1rem;
+    text-align: center;
 
     @media (max-width: 768px) {
       font-size: 1.25rem;
@@ -391,6 +395,7 @@ const ConceptCard = styled(motion.div)`
     color: var(--text-secondary);
     line-height: 1.6;
     font-size: 1rem;
+    text-align: center;
 
     .highlight-text {
       color: var(--primary-color);
@@ -694,13 +699,13 @@ const Identity: React.FC = () => {
                   </div>
                   
                   <div className="description">
-                    <div style={{ marginBottom: '0.8rem' }}>
+                    <div style={{ marginBottom: '0.8rem', textAlign: 'center' }}>
                       {concept.description} <br/>
                     </div>
-                    <div style={{ marginBottom: '0.8rem' }}>
+                    <div style={{ marginBottom: '0.8rem', textAlign: 'center' }}>
                       {concept.description2} <br/>
                     </div>
-                    <div>
+                    <div style={{ textAlign: 'center' }}>
                       {concept.description3}
                     </div>
                   </div>
@@ -897,7 +902,7 @@ const Identity: React.FC = () => {
                 margin: '2rem auto 0',
                 textAlign: 'center'
               }}>
-                Dynamic FINE의 고유한 색상 시스템으로 다양한 브랜드 터치포인트에서 
+                Dynamic FINE의 고유한 색상 시스템으로 다양한 브랜드 터치포인트에서 <br/>
                 일관된 브랜드 경험을 제공합니다.
               </p>
             </motion.div>
@@ -975,7 +980,7 @@ const Identity: React.FC = () => {
               <div className="main-text">
                 <span className="brand-name">Dynamic FINE</span>
                 <br />
-                "최고를 지향하면서도, 사람 한 명 한 명을<br />
+                "최고를 지향하면서도, 사람 한 명 <br />한 명을
                 소중히 여기는 조직"
               </div>
               <div className="sub-text">
