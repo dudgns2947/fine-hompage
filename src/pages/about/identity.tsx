@@ -627,9 +627,10 @@ const Identity: React.FC = () => {
                 color: 'var(--text-secondary)', 
                 lineHeight: '1.6',
                 maxWidth: '700px',
-                margin: '0 auto'
+                margin: '0 auto',
+                textAlign: 'center'
               }}>
-                가독성과 조화를 위해 제작된 전용 로고타입입니다. 
+                가독성과 조화를 위해 제작된 전용 로고타입입니다. <br/>
                 <span style={{ color: 'var(--primary-color)', fontWeight: '600' }}>
                   {' '}Dynamic
                 </span>의 왕관과 
