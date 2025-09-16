@@ -572,17 +572,23 @@ const Db: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.02 }}
+                  style={{ textAlign: 'center' }}
                 >
-                  <span className="icon" style={{ fontSize: '4rem' }}>{benefit.icon}</span>
-                  <h3>{benefit.title}</h3>
-                  <p className="description" style={{ fontWeight: '600', color: 'var(--primary-color)' }}>
+                  <span className="icon" style={{ fontSize: '4rem', display: 'block', textAlign: 'center' }}>{benefit.icon}</span>
+                  <h3 style={{ textAlign: 'center' }}>{benefit.title}</h3>
+                  <p className="description" style={{ 
+                    fontWeight: '600', 
+                    color: 'var(--primary-color)', 
+                    textAlign: 'center' 
+                  }}>
                     {benefit.description}
                   </p>
                   <p style={{ 
                     color: 'var(--text-secondary)', 
                     fontSize: '0.95rem', 
                     lineHeight: '1.6',
-                    marginTop: '1rem'
+                    marginTop: '1rem',
+                    textAlign: 'center'
                   }}>
                     {benefit.detail}
                   </p>
