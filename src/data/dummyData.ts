@@ -275,29 +275,34 @@ export const branches = [
 
 export const companyHistory = [
   {
-    year: "2010",
-    title: "FINE 설립",
-    description: "보험 중개업 시작",
-  },
-  {
-    year: "2015",
-    title: "전국 지점 확장",
-    description: "서울, 부산, 대구 지점 개설",
-  },
-  {
-    year: "2018",
-    title: "디지털 전환",
-    description: "온라인 보험 플랫폼 구축",
-  },
-  {
     year: "2020",
-    title: "AI 상담 서비스 도입",
-    description: "24시간 AI 챗봇 상담 서비스 시작",
+    title: "DYNAMIC FINE (시작)",
+    description: "FINE 사업단 창단<br/>신라지점 위촉<br/>그릿지점 위촉<br/>레드지점 위촉<br/>블루지점 위촉<br/>가정경제 R&D 위촉<br/>FINE 교육부 창단<br/>OJT 교육 6회진행<br/>하반기 워크샵 2회(울진/대부도)",
+  },
+  {
+    year: "2021",
+    title: "Special ONE FINE (정착)",
+    description: "OJT 심화반/테마교육(종신/재무/IRIS)<br/>찾아가는 JOB 세미나(보건대/목원대)<br/>상반기 워크샵(무주)<br/>송년의밤/마니또<br/>PRP 굿리치 금융전문가",
+  },
+  {
+    year: "2022",
+    title: "START-UP FINE (변화)",
+    description: "NEW 시스템 장착(새로운 운영방식 도입)<br/>NGP 굿리치 금융전문가",
   },
   {
     year: "2023",
-    title: "고객만족도 1위 달성",
-    description: "업계 최고 수준의 고객만족도 달성",
+    title: "Growth FINE (성장)",
+    description: "머스트지점 승격<br/>라임지점 위촉<br/>백두대간 사업단 위촉<br/>챔스지점 승격<br/>PRP굿리치 금융전문가(7~11기 총 5기수 입과)",
+  },
+  {
+    year: "2024",
+    title: "Dynamic FINE (역동)",
+    description: "FINE본부 승격(2023.12. 100명 목표)<br/>역동적인 Start UP(2024.12 200명 목표)<br/>I.O본부 승격 24.06<br/>(본부배출 2명/사업단배출 2명/지점장 16명)<br/>GFE 굿리치금융전문가(1~7기 매 기수 입과목표)<br/>생산성 10억, 인당 생산성 100만<br/>RSR 100명 • RCAC 30명 • MDRT 30명<br/>마케팅임원 10명",
+  },
+  {
+    year: "2025",
+    title: "Develop & Harmony (도약)",
+    description: "GFE 굿리치금융캠퍼스(매 기수 입과)<br/>2025 재적(200명)<br/>OJT 교육(년 6회 실시)<br/>레벨 UP 교육(6회 실시)<br/>생산성 15억, 인당 생산성 100만<br/>위드지점 위촉<br/>리더스지점 위촉<br/>제니스지점 위촉",
   },
 ];
 

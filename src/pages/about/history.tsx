@@ -68,7 +68,7 @@ const Timeline = styled.div`
     border-radius: 2px;
 
     @media (max-width: 768px) {
-      left: 30px;
+      left: 40px;
     }
   }
 `;
@@ -84,14 +84,14 @@ const TimelineItem = styled(motion.div)<{ index: number }>`
     text-align: right;
     
     .content {
-      margin-right: 4rem;
+      margin-right: 6rem;
     }
   ` : `
     flex-direction: row-reverse;
     text-align: left;
     
     .content {
-      margin-left: 4rem;
+      margin-left: 6rem;
     }
   `}
 
@@ -100,7 +100,7 @@ const TimelineItem = styled(motion.div)<{ index: number }>`
     text-align: left;
     
     .content {
-      margin-left: 4rem !important;
+      margin-left: 5rem !important;
       margin-right: 0 !important;
     }
   }
@@ -111,16 +111,21 @@ const TimelineItem = styled(motion.div)<{ index: number }>`
     transform: translateX(-50%);
     background: var(--primary-color);
     color: white;
-    padding: 1rem 1.5rem;
+    padding: 1rem 2rem;
     border-radius: 30px;
     font-weight: 700;
     font-size: 1.125rem;
-    z-index: 2;
+    z-index: 3;
     box-shadow: var(--shadow);
+    min-width: 80px;
+    text-align: center;
 
     @media (max-width: 768px) {
-      left: 30px;
+      left: 40px;
       transform: translateX(-50%);
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      min-width: 70px;
     }
   }
 
@@ -248,28 +253,46 @@ const MilestoneCard = styled(motion.div)`
 
 const milestones = [
   {
-    icon: <Icon type="building" />,
-    number: '2010',
-    label: '회사 설립',
-    description: '보험 중개업으로 시작'
+    icon: '👨‍💼',
+    number: '10',
+    label: 'SL',
+    description: '시니어 리더'
   },
   {
-    icon: <Icon type="star" />,
-    number: '50K+',
-    label: '누적 고객',
-    description: '신뢰받는 파트너'
+    icon: '💼',
+    number: '15',
+    label: 'BM',
+    description: '지점 매니저'
+  },
+  {
+    icon: '⭐',
+    number: '2',
+    label: 'SBM',
+    description: '시니어 지점 매니저'
   },
   {
     icon: '🏆',
-    number: '15',
-    label: '전국 지점',
-    description: '전국 서비스 네트워크'
+    number: '1',
+    label: 'RM',
+    description: '지역 매니저'
   },
   {
-    icon: <Icon type="chartline" />,
-    number: '99%',
-    label: '고객 만족도',
-    description: '최고 수준의 서비스'
+    icon: '👥',
+    number: '100',
+    label: 'GSR',
+    description: '굿리치 전문가'
+  },
+  {
+    icon: '🎯',
+    number: '30',
+    label: 'GAC',
+    description: '굿리치 어드바이저'
+  },
+  {
+    icon: <Icon type="star" />,
+    number: '20',
+    label: '마케팅임원',
+    description: '마케팅 전문가'
   }
 ];
 
@@ -277,9 +300,9 @@ const History: React.FC = () => {
   return (
     <Layout>
       <SEO 
-        title="회사연혁 - FINE"
-        description="FINE의 성장 스토리와 주요 연혁을 소개합니다. 2010년 설립부터 현재까지의 발전 과정을 확인하세요."
-        keywords="FINE, 회사연혁, 히스토리, 성장스토리, 연혁"
+        title="Goodrich FINE본부 연혁 - FINE"
+        description="Goodrich FINE본부의 성장 스토리와 주요 연혁을 소개합니다. 2020년 DYNAMIC FINE 시작부터 현재까지의 발전 과정을 확인하세요."
+        keywords="Goodrich FINE본부, 회사연혁, 히스토리, 성장스토리, 연혁"
       />
       
       <HistoryContainer>
@@ -290,15 +313,15 @@ const History: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              FINE의 <span className="highlight">성장 스토리</span>
+              Goodrich FINE본부 <span className="highlight">연혁</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              2010년 설립부터 현재까지, 고객과 함께 성장해온 
-              FINE의 발자취를 소개합니다.
+              2020년 DYNAMIC FINE 시작부터 현재까지, 끊임없는 도전과 성장으로 
+              발전해온 <br/> Goodrich FINE본부의 발자취를 소개합니다.
             </motion.p>
           </HeroContent>
         </HeroSection>
@@ -318,7 +341,7 @@ const History: React.FC = () => {
                   <div className="year-badge">{item.year}</div>
                   <div className="content">
                     <h3>{item.title}</h3>
-                    <p>{item.description}</p>
+                    <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
                   </div>
                 </TimelineItem>
               ))}
@@ -334,7 +357,7 @@ const History: React.FC = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              주요 <span className="highlight">성과</span>
+              조직 <span className="highlight">구성</span>
             </motion.h2>
             
             <MilestonesGrid>
