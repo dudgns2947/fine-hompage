@@ -3,85 +3,333 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Layout from '@/components/Layout/Layout';
 import SEO from '@/components/common/SEO';
-import Button from '@/components/common/Button';
-import Icon from '@/components/common/Icon';
 
 const EducationContainer = styled.div`
   min-height: 100vh;
 `;
 
 const HeroSection = styled.section`
-  padding: 4rem 0;
+  padding: 6rem 0;
   background: linear-gradient(135deg, 
     rgba(255, 107, 53, 0.1) 0%, 
     rgba(44, 62, 80, 0.05) 100%
   );
   text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(180deg); }
+  }
 `;
 
 const HeroContent = styled.div`
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 1;
 
   h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 1rem;
-
+    margin-bottom: 2rem;
+    
     .highlight {
       color: var(--primary-color);
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), transparent);
+        animation: expandWidth 2s ease-out forwards;
+      }
     }
+  }
+
+  @keyframes expandWidth {
+    0% { width: 0%; }
+    100% { width: 100%; }
   }
 
   p {
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
     color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+    font-weight: 500;
   }
 `;
 
-const ProgramsSection = styled.section`
-  padding: 5rem 0;
+const IntroSection = styled.section`
+  padding: 6rem 0;
   background: white;
+  position: relative;
 `;
 
-const ProgramsContent = styled.div`
+const IntroContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  text-align: center;
+`;
 
-  h2 {
+const SectionTitle = styled.h2`
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3rem;
+  position: relative;
+
+  .highlight {
+    color: var(--primary-color);
+  }
+
+  .emoji {
+    font-size: 1.2em;
+    margin-right: 1rem;
+    display: inline-block;
+    animation: bounce 2s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+  }
+`;
+
+const IntroCard = styled(motion.div)`
+  background: linear-gradient(135deg, 
+    rgba(255, 107, 53, 0.05) 0%, 
+    rgba(44, 62, 80, 0.02) 100%
+  );
+  border-radius: 20px;
+  padding: 4rem 3rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255, 107, 53, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  h3 {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  p {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: var(--text-secondary);
+    line-height: 1.8;
+    font-weight: 500;
+  }
+`;
+
+const ServicesSection = styled.section`
+  padding: 6rem 0;
+  background: var(--bg-secondary);
+  position: relative;
+`;
+
+const ServicesContent = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+`;
+
+const ServicesGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+`;
+
+const ServiceCard = styled(motion.div)`
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  }
+
+  .icon {
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
     text-align: center;
-    font-size: clamp(2rem, 4vw, 3rem);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 2.5vw, 1.8rem);
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    position: relative;
+  }
 
-    .highlight {
-      color: var(--primary-color);
+  .features {
+    list-style: none;
+    margin-bottom: 2rem;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      position: relative;
+
+      &::before {
+        content: '🔸';
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+      }
+
+      &:hover {
+        color: var(--text-primary);
+        transform: translateX(5px);
+        transition: all 0.3s ease;
+      }
     }
   }
 `;
 
-const ProgramsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+const LocationSection = styled.section`
+  padding: 2rem 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 107, 53, 0.02) 0%, 
+    rgba(44, 62, 80, 0.01) 100%
+  );
+  margin-top: 2rem;
+  border-radius: 15px;
+  position: relative;
+`;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+const LocationGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+`;
+
+const LocationCard = styled(motion.div)`
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(255, 107, 53, 0.15);
+  }
+
+  .location-emoji {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .location-name {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.1rem;
   }
 `;
 
-const ProgramCard = styled(motion.div)`
-  background: var(--bg-secondary);
-  border-radius: var(--border-radius);
-  padding: 2.5rem;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
+const VisionSection = styled.section`
+  padding: 6rem 0;
+  background: linear-gradient(135deg, 
+    var(--primary-color) 0%, 
+    rgba(255, 107, 53, 0.8) 100%
+  );
+  text-align: center;
+  color: white;
   position: relative;
   overflow: hidden;
 
@@ -91,232 +339,82 @@ const ProgramCard = styled(motion.div)`
     top: 0;
     left: 0;
     width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="20" cy="80" r="1" fill="white" opacity="0.1"/><circle cx="90" cy="30" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+    animation: float 20s linear infinite;
   }
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-  }
-
-  .icon {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    display: block;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-  }
-
-  .description {
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-
-  .features {
-    list-style: none;
-    margin-bottom: 2rem;
-
-    li {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.75rem;
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-
-      &::before {
-        content: '✓';
-        color: var(--primary-color);
-        font-weight: bold;
-        font-size: 1.1rem;
-      }
-    }
-  }
-
-  .program-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
-    background: white;
-    border-radius: var(--border-radius);
-
-    .info-item {
-      text-align: center;
-
-      .label {
-        font-size: 0.875rem;
-        color: var(--text-secondary);
-        margin-bottom: 0.25rem;
-      }
-
-      .value {
-        font-weight: 600;
-        color: var(--primary-color);
-      }
-    }
+  @keyframes float {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100px); }
   }
 `;
 
-const BenefitsSection = styled.section`
-  padding: 5rem 0;
-  background: var(--bg-secondary);
-`;
-
-const BenefitsContent = styled.div`
-  max-width: 1200px;
+const VisionContent = styled.div`
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 2rem;
-  text-align: center;
+  position: relative;
+  z-index: 1;
 
   h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    color: var(--text-primary);
     margin-bottom: 2rem;
-
-    .highlight {
-      color: var(--primary-color);
-    }
-  }
-
-  .benefits-text {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--text-secondary);
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto 3rem;
-  }
-`;
-
-const BenefitsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-  }
-`;
-
-const BenefitCard = styled(motion.div)`
-  background: white;
-  border-radius: var(--border-radius);
-  padding: 2rem;
-  box-shadow: var(--shadow);
-  text-align: center;
-
-  .icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 0.75rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   }
 
   p {
-    color: var(--text-secondary);
-    line-height: 1.6;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    line-height: 1.8;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    font-weight: 500;
+  }
+
+  .vision-emoji {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    display: block;
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    0% { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+    100% { text-shadow: 0 0 30px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.6); }
   }
 `;
 
-const programs = [
+const educationServices = [
   {
-    icon: <Icon type="graduation" />,
-    title: '신입 설계사 교육',
-    description: '보험업계 입문자를 위한 체계적인 기초 교육 프로그램입니다.',
+    emoji: '🎯',
+    title: '신인/경력 설계사 위촉지원',
     features: [
-      '보험 기초 이론 교육',
-      '상품 지식 습득',
-      '영업 스킬 트레이닝',
-      '고객 응대 실습',
-      '법규 및 컴플라이언스'
-    ],
-    duration: '4주',
-    schedule: '주 5일',
-    cost: '무료'
+      '35개 보험사 업무 제휴 위촉 지원',
+      '본부 내 OJT 교육을 통한 영업지원',
+      '전문 멘토링 시스템 운영',
+      '개별 맞춤형 교육 프로그램 제공'
+    ]
   },
   {
-    icon: '📜',
-    title: '전문 자격증 과정',
-    description: '보험 전문가로 성장하기 위한 각종 자격증 취득 지원 프로그램입니다.',
+    emoji: '🏢',
+    title: '지점 신규 OPEN 및 정착 지원',
     features: [
-      '손해사정사 과정',
-      '보험계리사 준비반',
-      'AFP/CFP 자격증',
-      '투자상담사 과정',
-      '온라인 강의 제공'
+      '전국 각지역 사무실 OPEN 지원',
+      '신규 조직 정착 컨설팅 제공',
+      '지역별 맞춤 전략 수립',
+      '지속적인 사후관리 서비스'
     ],
-    duration: '3-6개월',
-    schedule: '주말반',
-    cost: '지원'
+    locations: ['대전/세종', '대구', '전주', '평택']
   },
   {
-    icon: <Icon type="laptop" />,
-    title: '온라인 교육 플랫폼',
-    description: '언제 어디서나 학습할 수 있는 온라인 교육 시스템입니다.',
+    emoji: '📚',
+    title: '본부 테마교육 및 영업 노하우 공유',
     features: [
-      '24시간 접근 가능',
-      '모바일 최적화',
-      '진도 관리 시스템',
-      '퀴즈 및 테스트',
-      '수료증 발급'
-    ],
-    duration: '상시',
-    schedule: '자율학습',
-    cost: '무료'
-  },
-  {
-    icon: <Icon type="bullseye" />,
-    title: '정기 세미나 & 워크샵',
-    description: '최신 트렌드와 실무 노하우를 공유하는 정기 교육 프로그램입니다.',
-    features: [
-      '월례 세미나',
-      '전문가 특강',
-      '사례 연구',
-      '네트워킹 기회',
-      '우수사례 공유'
-    ],
-    duration: '월 1회',
-    schedule: '토요일',
-    cost: '무료'
-  }
-];
-
-const benefits = [
-  {
-    icon: '🏆',
-    title: '전문성 향상',
-    description: '체계적인 교육을 통한 전문 역량 강화'
-  },
-  {
-    icon: <Icon type="money" />,
-    title: '수익 증대',
-    description: '전문 지식 습득으로 영업 성과 향상'
-  },
-  {
-    icon: '🤝',
-    title: '네트워킹',
-    description: '동료들과의 정보 교환 및 인맥 형성'
-  },
-  {
-    icon: <Icon type="chartline" />,
-    title: '경력 발전',
-    description: '자격증 취득을 통한 경력 개발'
+      '분기별 테마교육을 통한 Level Up',
+      '마케팅임원 노하우 전수',
+      '우수사례 상시 공유 시스템',
+      '최신 트렌드 반영 교육 커리큘럼'
+    ]
   }
 ];
 
@@ -325,146 +423,165 @@ const Education: React.FC = () => {
     <Layout>
       <SEO 
         title="교육부 - FINE"
-        description="FINE 교육부에서 제공하는 전문 보험 교육 프로그램을 소개합니다. 신입 교육부터 전문 자격증까지 체계적인 교육을 제공합니다."
-        keywords="FINE, 교육부, 보험교육, 자격증, 세미나, 워크샵, 온라인교육"
+        description="FINE 교육부는 신인/경력 위촉부터 정착까지 전 과정을 함께하는 핵심 파트너 조직입니다. 체계적인 교육과 지원을 통해 성공적인 보험 전문가로 성장하세요."
+        keywords="FINE, 교육부, 위촉지원, 지점개설, 테마교육, 영업노하우, 보험교육"
       />
       
       <EducationContainer>
         <HeroSection>
           <HeroContent>
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 1, ease: "easeOut" }}
             >
-              <span className="highlight">교육부</span>
+              <span className="highlight">교육부</span> 소개
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
             >
-              전문적인 보험 교육과 트레이닝 프로그램을 통해 
-              최고의 보험 전문가를 양성합니다.
+              신인/경력 위촉부터 정착까지, 당신의 성공 여정을 함께합니다
             </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Button size="large">
-                교육 신청하기
-              </Button>
-            </motion.div>
           </HeroContent>
         </HeroSection>
 
-        <ProgramsSection>
-          <ProgramsContent>
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
+        <IntroSection>
+          <IntroContent>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <span className="highlight">교육 프로그램</span>
-            </motion.h2>
-            
-            <ProgramsGrid>
-              {programs.map((program, index) => (
-                <ProgramCard
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <span className="icon">{program.icon}</span>
-                  <h3>{program.title}</h3>
-                  <p className="description">{program.description}</p>
-                  
-                  <div className="program-info">
-                    <div className="info-item">
-                      <div className="label">기간</div>
-                      <div className="value">{program.duration}</div>
-                    </div>
-                    <div className="info-item">
-                      <div className="label">일정</div>
-                      <div className="value">{program.schedule}</div>
-                    </div>
-                    <div className="info-item">
-                      <div className="label">비용</div>
-                      <div className="value">{program.cost}</div>
-                    </div>
-                  </div>
+              <SectionTitle>
+                <span className="emoji">🤝</span>
+                <span className="highlight">FINE 교육부</span>는
+              </SectionTitle>
+              
+              <IntroCard
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <h3>핵심 파트너 조직</h3>
+                <p>
+                  신인/경력 위촉부터 정착까지<br/>
+                  전 과정을 함께하는 핵심 파트너 조직입니다.
+                </p>
+              </IntroCard>
+            </motion.div>
+          </IntroContent>
+        </IntroSection>
 
-                  <ul className="features">
-                    {program.features.map((feature, idx) => (
-                      <li key={idx}>{feature}</li>
-                    ))}
-                  </ul>
-                  
-                                <Button variant="outline" $fullWidth>
-                자세히 보기
-              </Button>
-                </ProgramCard>
-              ))}
-            </ProgramsGrid>
-          </ProgramsContent>
-        </ProgramsSection>
-
-        <BenefitsSection>
-          <BenefitsContent>
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              교육의 <span className="highlight">장점</span>
-            </motion.h2>
-            
-            <motion.p
-              className="benefits-text"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              FINE의 체계적인 교육 프로그램을 통해 전문성을 키우고, 
-              성공적인 보험 전문가로 성장하세요.
-            </motion.p>
-            
-            <BenefitsGrid>
-              {benefits.map((benefit, index) => (
-                <BenefitCard
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <span className="icon">{benefit.icon}</span>
-                  <h3>{benefit.title}</h3>
-                  <p>{benefit.description}</p>
-                </BenefitCard>
-              ))}
-            </BenefitsGrid>
-
+        <ServicesSection>
+          <ServicesContent>
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <Button size="large">
-                <Icon type="phone" style={{ marginRight: '0.5rem' }} />교육 상담 신청
-              </Button>
+              <SectionTitle>
+                <span className="emoji">⭐</span>
+                핵심 <span className="highlight">서비스</span>
+              </SectionTitle>
             </motion.div>
-          </BenefitsContent>
-        </BenefitsSection>
+
+            <ServicesGrid>
+              {educationServices.map((service, index) => (
+                <ServiceCard
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: index * 0.2 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.02 }}
+                >
+                  <span className="icon">{service.emoji}</span>
+                  <h3>{service.title}</h3>
+                  
+                  <ul className="features">
+                    {service.features.map((feature, idx) => (
+                      <motion.li 
+                        key={idx}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.5, delay: 0.1 * idx }}
+                        viewport={{ once: true }}
+                      >
+                        {feature}
+                      </motion.li>
+                    ))}
+                  </ul>
+
+                  {service.locations && (
+                    <LocationSection>
+                      <h4 style={{ 
+                        textAlign: 'center', 
+                        color: 'var(--primary-color)', 
+                        fontSize: '1.2rem',
+                        fontWeight: '600',
+                        marginBottom: '1rem'
+                      }}>
+                        🗺️ 현재 운영 지역
+                      </h4>
+                      <LocationGrid>
+                        {service.locations.map((location, locIdx) => (
+                          <LocationCard
+                            key={locIdx}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, delay: 0.1 * locIdx }}
+                            viewport={{ once: true }}
+                            whileHover={{ scale: 1.05 }}
+                          >
+                            <span className="location-emoji">📍</span>
+                            <div className="location-name">{location}</div>
+                          </LocationCard>
+                        ))}
+                      </LocationGrid>
+                    </LocationSection>
+                  )}
+                </ServiceCard>
+              ))}
+            </ServicesGrid>
+          </ServicesContent>
+        </ServicesSection>
+
+        <VisionSection>
+          <VisionContent>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+            >
+              <span className="vision-emoji">🚀</span>
+              <motion.h2
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                함께 성장하는 미래
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                viewport={{ once: true }}
+              >
+                FINE 교육부와 함께라면<br/>
+                성공적인 보험 전문가로의 여정이<br/>
+                더욱 확실하고 빨라집니다
+              </motion.p>
+            </motion.div>
+          </VisionContent>
+        </VisionSection>
       </EducationContainer>
     </Layout>
   );
