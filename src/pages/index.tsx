@@ -197,9 +197,9 @@ export default function Home() {
       </SloganSection>
       
       <HeroSection />
-      <ImageContainer>
-        <Image src="/image/history.png" alt="FINE" />
-      </ImageContainer>
+      <ImageContainer2>
+        <Image src="/image/history.jpg" alt="FINE" />
+      </ImageContainer2>
       <ServicesSection />
       <ImageContainer>
         <Image src="/image/history-2.png" alt="FINE" />
@@ -213,6 +213,17 @@ const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+`;
+
+const ImageContainer2 = styled.div`
+  width: 60%;
+  height: 60%;
+  position: relative;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const Image = styled.img`
