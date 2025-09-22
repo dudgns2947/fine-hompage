@@ -222,13 +222,12 @@ const ImageContainer2 = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
     width: 100%;
     height: 100%;
   }
-
-  
 `;
 
 const Image = styled.img`
