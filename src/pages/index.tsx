@@ -219,11 +219,16 @@ const ImageContainer2 = styled.div`
   width: 60%;
   height: 60%;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 768px) {
     width: 100%;
     height: 100%;
   }
+
+  
 `;
 
 const Image = styled.img`
