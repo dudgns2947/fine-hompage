@@ -228,7 +228,7 @@ const ImageContainer2 = styled.div`
     width: 100%;
     height: 100%;
   }
-`;
+ㅔㅔ`;
 
 const Image = styled.img`
   width: 100%;
