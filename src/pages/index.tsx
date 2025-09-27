@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
@@ -185,22 +186,25 @@ export default function Home() {
           >
             <span>최고</span>를 향한 도전 <br/><span>사람</span>을 향한 가치
           </SloganText>
-          <SloganSubtext
+          {/* <SloganSubtext
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
           >
             Dynamic FINE이 추구하는 핵심 가치
-          </SloganSubtext>
+          </SloganSubtext> */}
         </SloganContent>
       </SloganSection>
+      <ImageContainer>
+        <Image src="/image/m-2.jpg" alt="history" />
+      </ImageContainer>
       
-      <HeroSection />
+      {/* <HeroSection /> */}
       <ImageContainer2>
         <Image src="/image/history.jpg" alt="FINE" />
       </ImageContainer2>
-      <ServicesSection />
+      {/* <ServicesSection /> */}
       <ImageContainer>
         <Image src="/image/history-2.png" alt="FINE" />
       </ImageContainer>
@@ -228,7 +232,7 @@ const ImageContainer2 = styled.div`
     width: 100%;
     height: 100%;
   }
-ㅔㅔ`;
+`;
 
 const Image = styled.img`
   width: 100%;

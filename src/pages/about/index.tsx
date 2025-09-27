@@ -186,12 +186,17 @@ const TimelineItem = styled(motion.div)<{ index: number }>`
       font-size: 1.5rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     p {
       color: var(--text-secondary);
       line-height: 1.6;
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 `;
@@ -360,23 +365,6 @@ const About: React.FC = () => {
               <span className="highlight">신뢰</span>와 <span className="highlight">혁신</span>으로<br />
               함께하는 FINE
             </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              {companyInfo.description}을 목표로 2010년부터 고객과 함께 성장해온 FINE입니다. <br/>
-              전문성과 신뢰를 바탕으로 고객의 안전한 미래를 보장합니다.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Button size="large">
-                상담 신청하기
-              </Button>
-            </motion.div>
           </HeroContent>
         </HeroSection>
 
@@ -422,7 +410,15 @@ const About: React.FC = () => {
                   <div className="year-badge">{item.year}</div>
                   <div className="content">
                     <h3>{item.title}</h3>
-                    <p>{item.description}</p>
+                    <div>
+                      {Array.isArray(item.description) ? (
+                        item.description.map((desc, i) => (
+                          <p key={i}>{desc}</p>
+                        ))
+                      ) : (
+                        <p>{item.description}</p>
+                      )}
+                    </div>
                   </div>
                 </TimelineItem>
               ))}
@@ -440,18 +436,18 @@ const About: React.FC = () => {
             >
               FINE의 <span className="highlight">비전</span>
             </motion.h2>
-            <motion.p
+            <motion.div
               className="vision-text"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              "고객의 행복한 미래를 위한 든든한 동반자가 되겠습니다"
-              <br /><br />
-              FINE은 단순한 보험 판매를 넘어, 고객의 인생 전반에 걸친 
-              리스크 관리 파트너로서 <br/> 최고의 서비스를 제공하겠습니다.
-            </motion.p>
+              <p>"고객의 행복한 미래를 위한 든든한 동반자가 되겠습니다"</p>
+              <br />
+              <p>FINE은 단순한 보험 판매를 넘어, 고객의 인생 전반에 걸친<br />
+              리스크 관리 파트너로서 최고의 서비스를 제공하겠습니다.</p>
+            </motion.div>
             
             <div style={{ 
               display: 'grid', 

@@ -756,7 +756,7 @@ const galleryData: GalleryCategory[] = [
     title: '2025년 시무식',
     description: '2025년 새해를 맞이하여 진행된 시무식과 본부 승격식의 생생한 현장을 담았습니다.',
     date: '2025.01.20',
-    thumbnail: '/image/opening/2025opening-1.jpg',
+    thumbnail: '/image/homepage/파인 영상/2025 FINE본부 시무식 단체사진.jpg',  // 단체사진으로 변경
     mediaCount: 23,
     items: [
       // 기존 opening 폴더 이미지들
@@ -805,7 +805,7 @@ const galleryData: GalleryCategory[] = [
     title: '2025썸머',
     description: '2025년 여름 발대식과 활동들을 기록한 영상 모음입니다.',
     date: '2025.07.15',
-    thumbnail: '/video/summer-opening/2025-summer-opening-1.mp4',
+    thumbnail: '/image/homepage/파인 영상/2025 FINE본부 썸머 발대식.mp4',
     thumbnailType: 'video',
     mediaCount: 16,
     items: [
@@ -831,19 +831,19 @@ const galleryData: GalleryCategory[] = [
     ]
   },
 
-  // 3. 2024년 썸머 파타야
-  {
-    id: '2024-summer-pattaya',
-    title: '2024썸머 - 파타야',
-    description: '2024년 여름 파타야 워크샵의 특별한 추억을 담은 영상입니다.',
-    date: '2024.07.15',
-    thumbnail: '/image/homepage/파인 영상/2024 FINE본부 썸머_파타야.mp4',
-    thumbnailType: 'video',
-    mediaCount: 1,
-    items: [
-      { id: 'pattaya-2024', type: 'video', src: '/image/homepage/파인 영상/2024 FINE본부 썸머_파타야.mp4' }
-    ]
-  },
+  // // 3. 2024년 썸머 파타야
+  // {
+  //   id: '2024-summer-pattaya',
+  //   title: '2024썸머 - 파타야',
+  //   description: '2024년 여름 파타야 워크샵의 특별한 추억을 담은 영상입니다.',
+  //   date: '2024.07.15',
+  //   thumbnail: '/image/homepage/파인 영상/2024 FINE본부 썸머_파타야.mp4',
+  //   thumbnailType: 'video',
+  //   mediaCount: 1,
+  //   items: [
+  //     { id: 'pattaya-2024', type: 'video', src: '/image/homepage/파인 영상/2024 FINE본부 썸머_파타야.mp4' }
+  //   ]
+  // },
 
   // 4. 기존 2024 썸머 (유지)
   {
@@ -865,7 +865,7 @@ const galleryData: GalleryCategory[] = [
     title: '2024윈터 - 삿포로',
     description: '2024년 겨울 삿포로 여행의 추억을 담은 영상과 사진 모음입니다.',
     date: '2024.12.20',
-    thumbnail: '/video/winter-opening/2025+FINE본부+윈터_+삿포로+(1).jpg',
+    thumbnail: '/video/winter-opening/2025+FINE본부+윈터_+삿포로+(2).jpg',
     mediaCount: 6,
     items: [
       // 기존 winter-opening 폴더 파일들
@@ -886,7 +886,7 @@ const galleryData: GalleryCategory[] = [
     title: '정기 세미나 & 킥오프',
     description: '본부의 정기 세미나, 킥오프 행사, 대학교 세미나 등 다양한 교육 및 행사 현장입니다.',
     date: '2025.01.15',
-    thumbnail: '/image/homepage/정기 세미나 (킥오프 행사) (1).jpg',
+    thumbnail: '/image/homepage/파인 영상/2025 FINE본부 연합 킥오프.jpg',  // 단체사진으로 변경
     mediaCount: 20,
     items: [
       // 킥오프 행사 이미지들
@@ -921,7 +921,7 @@ const galleryData: GalleryCategory[] = [
     title: '신입 설계사 교육',
     description: '전주, 대전 등 전국 각 지역에서 진행되는 신입 설계사들을 위한 체계적인 교육 프로그램입니다.',
     date: '2024.11.20',
-    thumbnail: '/image/homepage/신입 설계사 교육 전주 (1).jpg',
+    thumbnail: '/image/homepage/신입 설계사 교육 전주 (3).jpg',  // 단체사진으로 변경
     mediaCount: 13,
     items: [
       // 전주 교육
@@ -1010,7 +1010,7 @@ const galleryData: GalleryCategory[] = [
     title: '금융전문가 과정',
     description: '전문적인 금융 지식과 실무 능력 향상을 위한 체계적인 교육 과정입니다.',
     date: '2024.06.25',
-    thumbnail: '/image/homepage/금융전문가 과정.jpg',
+    thumbnail: '/image/homepage/금융전문가 과정 (15).jpg',  // 단체사진으로 변경
     mediaCount: 16,
     items: [
       { id: 'fin-expert-main', type: 'image', src: '/image/homepage/금융전문가 과정.jpg' },
@@ -1038,7 +1038,7 @@ const galleryData: GalleryCategory[] = [
     title: '워크샵 & 리더 교육',
     description: '정기 워크샵, 리더워크샵, 썸머 워크샵 등 다양한 교육 프로그램과 리더십 개발 과정입니다.',
     date: '2024.05.30',
-    thumbnail: '/image/homepage/리더워크샵.png',
+    thumbnail: '/image/homepage/교육부/썸머 워크샵 (6).jpg',
     mediaCount: 22,
     items: [
       // 리더워크샵
@@ -1079,7 +1079,7 @@ const galleryData: GalleryCategory[] = [
     title: '전문 교육 & 특강',
     description: 'OJT 교육, 원수사 교육, ChatGPT 교육, 특강 등 다양한 전문 교육 프로그램입니다.',
     date: '2024.04.20',
-    thumbnail: '/image/homepage/교육부/교육부 OJT.png',
+    thumbnail: '/image/homepage/파인 영상/2025 FINE본부 특강.jpg',
     mediaCount: 10,
     items: [
       // OJT 교육
