@@ -174,6 +174,11 @@ const TimelineItem = styled(motion.div)<{ index: number }>`
       color: var(--text-secondary);
       line-height: 1.8;
       font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
 `;
@@ -253,46 +258,46 @@ const MilestoneCard = styled(motion.div)`
 
 const milestones = [
   {
-    icon: '👨‍💼',
-    number: '10',
-    label: 'SL',
-    description: '시니어 리더'
-  },
-  {
-    icon: '💼',
-    number: '15',
-    label: 'BM',
-    description: '지점 매니저'
+    icon: '🏆',
+    number: '1',
+    label: 'RM',
+    description: '본부장'
   },
   {
     icon: '⭐',
     number: '2',
     label: 'SBM',
-    description: '시니어 지점 매니저'
+    description: '사업단장'
   },
   {
-    icon: '🏆',
-    number: '1',
-    label: 'RM',
-    description: '지역 매니저'
+    icon: '💼',
+    number: '15',
+    label: 'BM',
+    description: '지점장'
+  },
+  {
+    icon: '👨‍💼',
+    number: '30',
+    label: 'SM',
+    description: '부지점장'
+  },
+  {
+    icon: <Icon type="star" />,
+    number: '10',
+    label: '마케팅임원',
+    description: '마케팅임원'
+  },
+  {
+    icon: '🎯',
+    number: '30',
+    label: 'GAC',
+    description: '연도대상 달성'
   },
   {
     icon: '👥',
     number: '100',
     label: 'GSR',
     description: '굿리치 전문가'
-  },
-  {
-    icon: '🎯',
-    number: '30',
-    label: 'GAC',
-    description: '굿리치 어드바이저'
-  },
-  {
-    icon: <Icon type="star" />,
-    number: '20',
-    label: '마케팅임원',
-    description: '마케팅 전문가'
   }
 ];
 
@@ -315,14 +320,14 @@ const History: React.FC = () => {
             >
               Goodrich FINE본부 <span className="highlight">연혁</span>
             </motion.h1>
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              2020년 DYNAMIC FINE 시작부터 현재까지, 끊임없는 도전과 성장으로 
-              발전해온 <br/> Goodrich FINE본부의 발자취를 소개합니다.
-            </motion.p>
+              <p>2020년 DYNAMIC FINE 시작부터 현재까지, 끊임없는 도전과 성장으로</p>
+              <p>발전해온 Goodrich FINE본부의 발자취를 소개합니다.</p>
+            </motion.div>
           </HeroContent>
         </HeroSection>
 
@@ -341,7 +346,15 @@ const History: React.FC = () => {
                   <div className="year-badge">{item.year}</div>
                   <div className="content">
                     <h3>{item.title}</h3>
-                    <p dangerouslySetInnerHTML={{ __html: item.description }}></p>
+                    <div>
+                      {Array.isArray(item.description) ? (
+                        item.description.map((desc, i) => (
+                          <p key={i}>{desc}</p>
+                        ))
+                      ) : (
+                        <p>{item.description}</p>
+                      )}
+                    </div>
                   </div>
                 </TimelineItem>
               ))}

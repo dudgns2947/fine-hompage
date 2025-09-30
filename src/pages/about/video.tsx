@@ -802,7 +802,7 @@ const galleryData: GalleryCategory[] = [
   // 2. 2025년 썸머 (확장)
   {
     id: '2025-summer',
-    title: '2025썸머',
+    title: '2025 썸머 발대식',
     description: '2025년 여름 발대식과 활동들을 기록한 영상 모음입니다.',
     date: '2025.07.15',
     thumbnail: '/image/homepage/파인 영상/2025 FINE본부 썸머 발대식.mp4',
@@ -848,7 +848,7 @@ const galleryData: GalleryCategory[] = [
   // 4. 기존 2024 썸머 (유지)
   {
     id: '2024-summer',
-    title: '2024썸머',
+    title: '2024 썸머 파타야',
     description: '2024년 여름 활동 영상입니다.',
     date: '2024.07.15',
     thumbnail: '/video/summer-opening/2024-summber-opening-1.mp4',

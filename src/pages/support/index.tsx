@@ -58,11 +58,14 @@ const ServicesContent = styled.div`
 
 const ServicesGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    max-width: none;
   }
 `;
 
@@ -350,24 +353,6 @@ const Support: React.FC = () => {
             >
               <span className="highlight">고객지원</span>
             </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              FINE의 다양한 고객지원 서비스를 이용하세요.
-              언제나 고객의 편의를 최우선으로 생각합니다.
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-            >
-              <Button size="large">
-                <Icon type="phone" style={{ marginRight: '0.5rem' }} />
-                바로 상담하기
-              </Button>
-            </motion.div>
           </HeroContent>
         </HeroSection>
 

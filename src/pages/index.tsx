@@ -217,6 +217,11 @@ const ImageContainer = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 `;
 
 const ImageContainer2 = styled.div`
@@ -227,6 +232,7 @@ const ImageContainer2 = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  max-width: 1200px;
 
   @media (max-width: 768px) {
     width: 100%;
